@@ -12,16 +12,34 @@ from groq import Groq
 # Duplicate IDs
 # Invalid types
 
+# def report_invalid_records()
 
+def report_invalid(all_records: int, failed: int):
+    with open(file="reports/report.txt", mode="w") as file:
+        file.write(f"Records Read: {all_records}\n")
+        file.write(f"Valid Records: {all_records-failed}\n")
+        file.write(f"Invalid Records: {failed}\n")
 
 def validate(fileData: pd.DataFrame):
     # transaction_id,product,category,quantity,price
 
     empty_columns = missing_columns(file_data=fileData)
-    prices_negatives = negative_prices(file_data=fileData)
-    quantities_negatives = negative_quantites(file_data=fileData)
+    prices_negatives, unsupported_opperand_price = negative_prices(file_data=fileData)
+    quantities_negatives, unsupported_opperand_quantites = negative_quantites(file_data=fileData)
     duplicates_ = duplicates(fileData)
-    # Algo that detects quantity is matching price
+    strange_prices_ = strange_prices(fileData)
+
+    failed_data = calculate_everyFailed_method(empty_columns,
+                                               prices_negatives,
+                                               unsupported_opperand_price,
+                                               quantities_negatives,
+                                               unsupported_opperand_quantites,
+                                               duplicates_,
+                                               strange_prices_
+    )
+    print(failed_data)
+    report_invalid(len(fileData), failed_data)
+
 
     print(empty_columns)
     print()
@@ -30,6 +48,12 @@ def validate(fileData: pd.DataFrame):
     print(f"Quantities Negatives: \n{quantities_negatives}")
     print()
     print(f"Duplicates\n{duplicates_}")
+    print()
+    print(f"Strange Prices\n{strange_prices_}")
+
+def calculate_everyFailed_method(*args) -> int:
+    print(args)
+    return  sum([len(i) for i in args])
 
 def negative_quantites(file_data: pd.DataFrame) -> list[tuple[int]]:   
     quantities = []
@@ -81,7 +105,7 @@ def missing_columns(file_data: pd.DataFrame) -> dict:
                 file_data.at[index, "category"] = product_category
                 
                 df = pd.DataFrame(file_data)
-                df.to_csv("data/sales.csv")
+                df.to_csv("data/sales.csv", index=False)
 
 
 
@@ -130,6 +154,21 @@ def get_product_category(product_name: str) -> str:
     )
     
     return response.choices[0].message.content.strip() 
+
+
+def strange_prices(file_data: pd.DataFrame) -> list:
+
+    strange =  []
+    for index, row in file_data.iterrows():
+        try:
+            if int(row["price"]) < 0:
+                continue
+            if int(row["quantity"]) > int(row["price"]):
+                strange.append(row["transaction_id"])
+        except ValueError:
+            continue
+
+    return strange
 
 
 df = load_sales()

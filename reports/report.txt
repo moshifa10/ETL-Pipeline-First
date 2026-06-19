@@ -1,0 +1,3 @@
+Records Read: 26
+Valid Records: 18
+Invalid Records: 8
