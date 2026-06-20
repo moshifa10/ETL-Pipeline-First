@@ -40,7 +40,7 @@ def validate(fileData: pd.DataFrame):
     )
     report(len(fileData), failed_data)
 
-    report_csv(prices_negatives, quantities_negatives, duplicates_, strange_prices_, unsupported_opperand_price, unsupported_opperand_quantites)
+    report_csv(prices_negatives, quantities_negatives, duplicates_, strange_prices_, unsupported_opperand_price, unsupported_opperand_quantites, empty_columns)
     # print(empty_columns)
     # print()
     # print(f"Negatives Prices: \n{prices_negatives}")
@@ -52,7 +52,9 @@ def validate(fileData: pd.DataFrame):
     # print(f"Strange Prices\n{strange_prices_}")
 
 
-def report_csv(negative_prices=None, negative_quantitiy=None, dublicates_=None, strange=None, unsupported_opperand_price=None, unsupported_opperand_quantites=None):
+
+
+def report_csv(negative_prices=None, negative_quantitiy=None, dublicates_=None, strange=None, unsupported_opperand_price=None, unsupported_opperand_quantites=None, empty_columns=None):
 
     # prices
     if negative_prices != None:
@@ -81,6 +83,19 @@ def report_csv(negative_prices=None, negative_quantitiy=None, dublicates_=None, 
         for  transaction_id in unsupported_opperand_quantites:
             write_to_csv(transaction_id, "Uknown types like we got alphabets or symbols instead of numbers from quantity")
 
+    if empty_columns != None:
+        for value in empty_columns:
+            if value == "product":
+                for transaction_id in empty_columns[value]:
+                    write_to_csv(transaction_id, "Product missing")
+            
+            elif value == "quantity":
+                for transaction_id in empty_columns[value]:
+                    write_to_csv(transaction_id, "quantity missing")
+            
+            elif value == "price":
+                for transaction_id in empty_columns[value]:
+                    write_to_csv(transaction_id, "Price missing")
     
     
 def write_to_csv(transaction_id: int, description: str):
@@ -93,7 +108,7 @@ def write_to_csv(transaction_id: int, description: str):
     dir_path = Path("reports")
 
     file_path = dir_path / "invalid_records.csv"
-    dir_path.mkdir(parents=True, exist_ok=True)
+    # dir_path.mkdir(parents=True, exist_ok=True)
     if not file_path.is_file() or file_path.stat().st_size == 0:
 
         df = pd.DataFrame(data)
@@ -143,19 +158,20 @@ def negative_prices(file_data: pd.DataFrame) -> list[tuple[int]]:
 def missing_columns(file_data: pd.DataFrame) -> dict:
     # Missing Coloumns
     missing_values = {}
+
     for index, row in file_data.iterrows():
         # Find missing coloumns
         if pd.isna(row["product"]):
-            if pd.isna(row["category"]):
-                if "product" in missing_values.keys():
-                    missing_values["product"].append([row["transaction_id"]])
-                    continue
-                missing_values["product"] = [row["transaction_id"]]
+            if "product" in missing_values.keys():
+                missing_values["product"].append(row["transaction_id"])
+                continue
+            missing_values["product"] = [row["transaction_id"]]
+            
 
         if pd.isna(row["category"]):
             if pd.isna(row["product"]):
                 if "category" in missing_values.keys():
-                    missing_values["category"].append([row["transaction_id"]])
+                    missing_values["category"].append(row["transaction_id"])
                     continue
                 missing_values["category"] = [row["transaction_id"]]
 
@@ -166,6 +182,19 @@ def missing_columns(file_data: pd.DataFrame) -> dict:
                 df = pd.DataFrame(file_data)
                 df.to_csv("data/sales.csv", index=False)
 
+
+        if pd.isna(row['quantity']):
+            if "quantity" in missing_values.keys():
+                missing_values["quantity"].append(row["transaction_id"])
+                continue
+            missing_values["quantity"]= [[row["transaction_id"]]]
+        
+        if pd.isna(row['price']):
+            if "price" in missing_values.keys():
+                missing_values["price"].append(row["transaction_id"])
+                continue
+            missing_values["price"]= [row["transaction_id"]]
+    print(missing_values)
     return missing_values
 
 def duplicates(file_data: pd.DataFrame) -> list[tuple[int]]:
