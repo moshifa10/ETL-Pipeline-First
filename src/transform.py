@@ -12,6 +12,7 @@ def transform(file_data: pd.DataFrame):
     print(invalid_transaction)
 
     revenue_by_product(file_data, invalid_transaction)
+    revenue_by_category(file_data, invalid_transaction)
 
 
 def revenue_by_product(file_data: pd.DataFrame , invalid_transactions: list[int]=None):
@@ -46,9 +47,9 @@ def revenue_by_product(file_data: pd.DataFrame , invalid_transactions: list[int]
         data['price'].append(price)
         data['total'].append(total)
 
-    print(transactions)
+    # print(transactions)
 
-    print(data)
+    # print(data)
     write_product_revenue(data)
 
     # write to a file 
@@ -70,6 +71,53 @@ def write_product_revenue(data: dict[list]):
         df.to_csv(file_path, index=False)
         
 
+def revenue_by_category(file_data: pd.DataFrame, invalid_transactions: list[int]):
+    transactions = {}
+    data = {
+            "category" : [],
+            "quantity": [],
+            "price": [],
+            "total": []
+        }
+    
+    for index, row in file_data.iterrows():
+
+        if not row['transaction_id'] in invalid_transactions:
+            if row['category'] not in transactions.keys():
+                transactions[row['category']] = {
+                    "quantity": int(row['quantity']),
+                    "price": int(row['price'])
+                }
+                continue
+        
+            transactions[row['category']]['quantity'] += int(row['quantity'])                    
+            transactions[row['category']]['price'] += int(row['price'])  
+
+
+    for category in transactions:
+        quantity, price = transactions[category]['quantity'], transactions[category]['price']
+        total = quantity * price
+
+        data['category'].append(category)
+        data['quantity'].append(quantity)
+        data['price'].append(price)
+        data['total'].append(total)
+
+    write_product_by_category(data)
+
+def write_product_by_category(data: dict[dict[list]]):
+    directory = Path("reports")
+   
+    file_path = directory / "revenue_by_category.csv"
+
+    if file_path.is_file() and file_path.stat().st_size > 0:
+        original = pd.read_csv(file_path)
+        df = pd.DataFrame(data)
+        original.update(df)
+    
+    else:
+        df = pd.DataFrame(data)
+        df.to_csv(file_path, index=False)
 
 
 # df = pd.read_csv("reports/invalid_records.csv")
