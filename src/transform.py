@@ -9,10 +9,47 @@ def transform(file_data: pd.DataFrame):
 
     invalid_transaction_file = pd.read_csv("reports/invalid_records.csv")
     invalid_transaction = get_invalid_transaction(invalid_transaction_file)
-    print(invalid_transaction)
+    # print(invalid_transaction)
+
+    valid_transactions(file_data, invalid_transaction)
 
     revenue_by_product(file_data, invalid_transaction)
     revenue_by_category(file_data, invalid_transaction)
+
+
+def valid_transactions(file_data: pd.DataFrame, invalid_transactions: list[int]=None):
+    data = {
+        "transaction_id": [],
+        "product" : [],
+        "quantity": [],
+        "price": [],
+        "total": []
+    }
+
+
+    for index, row in file_data.iterrows():
+        if not row.transaction_id in invalid_transactions:
+            data['transaction_id'].append(row['transaction_id'])
+            data['product'].append(row['product'])
+            data['quantity'].append(int(row['quantity']))
+            data['price'].append(int(row['price']))
+            data["total"].append((int(row['quantity']) * int(row['price'])))
+    # print(data)
+    write_total_valid_transaction(data)
+
+def write_total_valid_transaction(data: dict):
+    directory = Path("reports")
+   
+    file_path = directory / "valid_transactions.csv"
+
+    if file_path.is_file() and file_path.stat().st_size > 0:
+        original = pd.read_csv(file_path)
+        df = pd.DataFrame(data)
+        original.update(df)
+    
+    else:
+        df = pd.DataFrame(data)
+        df.to_csv(file_path, index=False)
 
 
 def revenue_by_product(file_data: pd.DataFrame , invalid_transactions: list[int]=None):
