@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 import os
+from sqlalchemy.orm import relationship
 
 load_dotenv()
 

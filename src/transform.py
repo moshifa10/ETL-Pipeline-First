@@ -24,7 +24,7 @@ def revenue_by_product(file_data: pd.DataFrame , invalid_transactions: list[int]
         "total": []
     }
 
-
+    
     for index, row in file_data.iterrows():
         if not int(row['transaction_id']) in invalid_transactions:
             if not row['product'] in transactions.keys():
