@@ -8,3 +8,6 @@ engine = create_engine(DATABASE_URL, echo=True)
 SessionLocal = sessionmaker(bind=engine)
 
 Base = declarative_base()
+
+
+database = "database.db"
