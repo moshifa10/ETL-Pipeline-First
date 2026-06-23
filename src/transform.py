@@ -21,6 +21,7 @@ def valid_transactions(file_data: pd.DataFrame, invalid_transactions: list[int]=
     data = {
         "transaction_id": [],
         "product" : [],
+        "category": [],
         "quantity": [],
         "price": [],
         "total": []
@@ -31,6 +32,7 @@ def valid_transactions(file_data: pd.DataFrame, invalid_transactions: list[int]=
         if not row.transaction_id in invalid_transactions:
             data['transaction_id'].append(row['transaction_id'])
             data['product'].append(row['product'])
+            data['category'].append(row['category'])
             data['quantity'].append(int(row['quantity']))
             data['price'].append(int(row['price']))
             data["total"].append((int(row['quantity']) * int(row['price'])))
@@ -61,7 +63,7 @@ def revenue_by_product(file_data: pd.DataFrame , invalid_transactions: list[int]
         "total": []
     }
 
-    
+
     for index, row in file_data.iterrows():
         if not int(row['transaction_id']) in invalid_transactions:
             if not row['product'] in transactions.keys():

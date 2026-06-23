@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String, Float, DateTime
 from datetime import datetime
 
 
-class sale(Base):
+class Sale(Base):
 
     __tablename__ = "sales"
 
