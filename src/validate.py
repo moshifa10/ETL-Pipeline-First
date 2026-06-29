@@ -60,6 +60,8 @@ def validate(fileData: pd.DataFrame):
 
 def report_csv(negative_prices=None, negative_quantitiy=None, dublicates_=None, strange=None, unsupported_opperand_price=None, unsupported_opperand_quantites=None, empty_columns=None):
     # prices
+
+    LOGGER.error("Writing invalid transactions to csv with its reasoning")
     if negative_prices != None:
         for transaction_id in negative_prices:
             write_to_csv(transaction_id, "Negative Price")
@@ -102,7 +104,6 @@ def report_csv(negative_prices=None, negative_quantitiy=None, dublicates_=None, 
     
     
 def write_to_csv(transaction_id: int, description: str):
-    LOGGER.error("Writing invalid transactions to csv with its reasoning")
     data = {
         "transaction_id" : [transaction_id],
         "description": [description]
@@ -226,7 +227,7 @@ def get_product_category(product_name: str) -> str:
 
     response = groq_client.chat.completions.create(
         model="llama-3.3-70b-versatile",
-        temperature=0.0,  # Setting to 0 ensures deterministic, consistent classifications
+        temperature=0.0,
         messages=[
             {"role": "system", "content": system_instruction},
             {"role": "user", "content": f"Product: {product_name}"}

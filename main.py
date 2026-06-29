@@ -8,8 +8,6 @@ import logging
 
 
 def main():
-    print("Hey")
-
     logging.basicConfig(level=logging.DEBUG, 
                         filename="logs/pipeline.log", 
                         filemode="w",
@@ -17,12 +15,13 @@ def main():
                         )
 
     logging.info("STARTING THE OPERATION")
-    print("Hey")
     df = load_sales()
 
     validate(df)
     transform(df)
     load()
+
+    logging.info("Finished the operation")
 
 
 
