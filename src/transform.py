@@ -1,12 +1,16 @@
 import pandas as pd
 from pathlib import Path
+import logging
+
+LOGGER = logging.getLogger(__name__)
+
 
 
 def get_invalid_transaction(file_data: pd.DataFrame) -> list[int]:
     return file_data['transaction_id'].tolist()
 
 def transform(file_data: pd.DataFrame):
-
+    LOGGER.info("TRANSFORMING DATA")
     invalid_transaction_file = pd.read_csv("reports/invalid_records.csv")
     invalid_transaction = get_invalid_transaction(invalid_transaction_file)
     # print(invalid_transaction)
@@ -18,6 +22,7 @@ def transform(file_data: pd.DataFrame):
 
 
 def valid_transactions(file_data: pd.DataFrame, invalid_transactions: list[int]=None):
+    LOGGER.info("Finding valid transactions")
     data = {
         "transaction_id": [],
         "product" : [],
@@ -43,6 +48,7 @@ def write_total_valid_transaction(data: dict):
     directory = Path("reports")
    
     file_path = directory / "valid_transactions.csv"
+    LOGGER.info(f"Writing valid transactions to the csv. FIleName: {file_path}")
 
     if file_path.is_file() and file_path.stat().st_size > 0:
         original = pd.read_csv(file_path)
@@ -55,6 +61,7 @@ def write_total_valid_transaction(data: dict):
 
 
 def revenue_by_product(file_data: pd.DataFrame , invalid_transactions: list[int]=None):
+    LOGGER.info("Calculating the revenue by product")
     transactions = {}
     data = {
         "product" : [],
@@ -99,6 +106,7 @@ def write_product_revenue(data: dict[list]):
     directory = Path("reports")
    
     file_path = directory / "revenue_by_product.csv"
+    LOGGER.info(f"Writing total sales by Product to {file_path}")
 
     if file_path.is_file() and file_path.stat().st_size > 0:
         original = pd.read_csv(file_path)
@@ -111,6 +119,8 @@ def write_product_revenue(data: dict[list]):
         
 
 def revenue_by_category(file_data: pd.DataFrame, invalid_transactions: list[int]):
+
+    LOGGER.info("Calculating revenue by category")
     transactions = {}
     data = {
             "category" : [],
@@ -145,9 +155,12 @@ def revenue_by_category(file_data: pd.DataFrame, invalid_transactions: list[int]
     write_product_by_category(data)
 
 def write_product_by_category(data: dict[dict[list]]):
+
     directory = Path("reports")
    
     file_path = directory / "revenue_by_category.csv"
+
+    LOGGER.info(f"Writing total sales by category to {file_path}")
 
     if file_path.is_file() and file_path.stat().st_size > 0:
         original = pd.read_csv(file_path)
@@ -162,6 +175,6 @@ def write_product_by_category(data: dict[dict[list]]):
 # df = pd.read_csv("reports/invalid_records.csv")
 # print(get_invalid_transaction(df))
 
-df = pd.read_csv("data/sales.csv")
-transform(df)
+# df = pd.read_csv("data/sales.csv")
+# transform(df)
 

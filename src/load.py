@@ -4,6 +4,10 @@ from pathlib import Path
 from models.sales import Sale
 from models.invalid_transaction import InvaliTransactions
 
+import logging
+
+LOGGER = logging.getLogger(__name__)
+
 
 session = SessionLocal()
 
@@ -20,6 +24,8 @@ def check_file_exists(folder: str, file: str) -> bool:
     return True
 
 def load():
+
+    LOGGER.info("LOADING THE DATA TO THE DATABASE")
     
     Base.metadata.create_all(bind=engine)
 
@@ -112,11 +118,13 @@ def load():
 
 
 def add_transactions(**kwags):
+
+    LOGGER.info("Add transactions to the database")
     valid_transactions = ["transaction_id", "product", "category", "quantity", "price", "total"]
 
 
     if sorted(kwags.keys()) == sorted( valid_transactions):
-    
+        LOGGER.info("Adding valid transactions to the database")
         data = session.query(Sale).filter(kwags.get('transaction_id') == Sale.transaction_id).first()
         if data:
             print("The transaction id exist")
@@ -134,7 +142,7 @@ def add_transactions(**kwags):
         session.commit()
 
     else:
-
+        LOGGER.critical("Addidng Invalid transactions to the database")
         data = session.query(InvaliTransactions).filter(InvaliTransactions.transaction_id == kwags.get('transaction_id') ).first()
         if data:
             print("The transaction id exist")

@@ -27,7 +27,7 @@ def report(all_records: int, failed: int):
 
 def validate(fileData: pd.DataFrame):
     # transaction_id,product,category,quantity,price
-
+    LOGGER.info("VALIDATING DATA")
     empty_columns = missing_columns(file_data=fileData)
     prices_negatives, unsupported_opperand_price = negative_prices(file_data=fileData)
     quantities_negatives, unsupported_opperand_quantites = negative_quantites(file_data=fileData)
