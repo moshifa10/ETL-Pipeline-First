@@ -26,3 +26,23 @@
 # 8	Negative Quantity
 # 9	Negative Price
 # 15	Invalid Quantity Type
+
+
+import logging
+
+logging.basicConfig(level=logging.DEBUG, 
+                    filename="logs/pipeline.log", 
+                    filemode="w",
+                    format="%(asctime)s - %(levelname)s - %(message)s"
+                    )
+
+logger = logging.getLogger(__name__)
+logger.info("Test custome logger")
+
+# Levels
+logging.debug("Debugging")
+logging.info("Information")
+logging.warning("Warning")
+logging.error("Error")
+logging.critical("Critical")
+

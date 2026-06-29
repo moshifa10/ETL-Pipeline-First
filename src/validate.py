@@ -3,6 +3,7 @@ from src.extract import load_sales
 from config.config import GROK
 from groq import Groq
 from pathlib import Path
+import logging
 
 # In vadilation we will report
 # Check for bads    
@@ -15,7 +16,10 @@ from pathlib import Path
 
 # def report_invalid_records()
 
+LOGGER = logging.getLogger(__name__)
+
 def report(all_records: int, failed: int):
+    LOGGER.info("Writing reports for valid and invalid with total receipt records.")
     with open(file="reports/report.txt", mode="w") as file:
         file.write(f"Records Read: {all_records}\n")
         file.write(f"Valid Records: {all_records-failed}\n")
@@ -55,7 +59,6 @@ def validate(fileData: pd.DataFrame):
 
 
 def report_csv(negative_prices=None, negative_quantitiy=None, dublicates_=None, strange=None, unsupported_opperand_price=None, unsupported_opperand_quantites=None, empty_columns=None):
-
     # prices
     if negative_prices != None:
         for transaction_id in negative_prices:
@@ -99,7 +102,7 @@ def report_csv(negative_prices=None, negative_quantitiy=None, dublicates_=None, 
     
     
 def write_to_csv(transaction_id: int, description: str):
-
+    LOGGER.error("Writing invalid transactions to csv with its reasoning")
     data = {
         "transaction_id" : [transaction_id],
         "description": [description]
@@ -156,6 +159,8 @@ def negative_prices(file_data: pd.DataFrame) -> list[tuple[int]]:
     return prices,strings
 
 def missing_columns(file_data: pd.DataFrame) -> dict:
+
+    LOGGER.critical("Finding missing columns")
     # Missing Coloumns
     missing_values = {}
 
@@ -194,16 +199,18 @@ def missing_columns(file_data: pd.DataFrame) -> dict:
                 missing_values["price"].append(row["transaction_id"])
                 continue
             missing_values["price"]= [row["transaction_id"]]
-    print(missing_values)
+    # print(missing_values)
     return missing_values
 
 def duplicates(file_data: pd.DataFrame) -> list[tuple[int]]:
+    LOGGER.error("Finding dublicates Transactions")
     all_transactions = [int(row["transaction_id"]) for index, row in file_data.iterrows()]
     counting = {num: all_transactions.count(num) for num in all_transactions}
     duplicates_ = [(row, counting[row]) for row in counting if counting[row] > 1]
     return duplicates_ 
 
 def get_product_category(product_name: str) -> str:
+    LOGGER.info("Asking Grok for category that is missing while having the product name")
     """Classifies a product into one of the predefined dataset categories."""
 
     groq_client = Groq(api_key=GROK)
@@ -230,7 +237,7 @@ def get_product_category(product_name: str) -> str:
 
 
 def strange_prices(file_data: pd.DataFrame) -> list:
-
+    LOGGER.critical("Finding Strange prices")
     strange =  []
     for index, row in file_data.iterrows():
         try:
@@ -244,8 +251,8 @@ def strange_prices(file_data: pd.DataFrame) -> list:
     return strange
 
 
-df = load_sales()
-validate(df)
+# df = load_sales()
+# validate(df)
 
 
 # duplicates(file_data=df)

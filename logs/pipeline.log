@@ -1,0 +1,6 @@
+2026-06-29 16:01:19,471 - INFO - Test custome logger
+2026-06-29 16:01:19,471 - DEBUG - Debugging
+2026-06-29 16:01:19,471 - INFO - Information
+2026-06-29 16:01:19,472 - WARNING - Warning
+2026-06-29 16:01:19,472 - ERROR - Error
+2026-06-29 16:01:19,472 - CRITICAL - Critical
