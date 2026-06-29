@@ -160,4 +160,4 @@ def add_transactions(**kwags):
         session.commit()
 
 
-load()
+# load()

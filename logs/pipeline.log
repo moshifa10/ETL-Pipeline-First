@@ -1,6 +1,34 @@
-2026-06-29 16:01:19,471 - INFO - Test custome logger
-2026-06-29 16:01:19,471 - DEBUG - Debugging
-2026-06-29 16:01:19,471 - INFO - Information
-2026-06-29 16:01:19,472 - WARNING - Warning
-2026-06-29 16:01:19,472 - ERROR - Error
-2026-06-29 16:01:19,472 - CRITICAL - Critical
+2026-06-29 16:36:24,115 - INFO - STARTING THE OPERATION
+2026-06-29 16:36:24,117 - INFO - Extracting CSV
+2026-06-29 16:36:24,216 - INFO - VALIDATING DATA
+2026-06-29 16:36:24,216 - CRITICAL - Finding missing columns
+2026-06-29 16:36:24,219 - INFO - Asking Grok for category that is missing while having the product name
+2026-06-29 16:36:25,388 - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-be104f24-c261-45da-af2d-1831a194698b', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a strict data classification assistant. Your task is to look at a product name and return ONLY its category. You must pick exactly one category from this list: Drinks, Food, Dairy, Snacks, Household. Do not write full sentences. Do not add punctuation. Return only the category name.'}, {'role': 'user', 'content': 'Product: Juice'}], 'model': 'llama-3.3-70b-versatile', 'temperature': 0.0}}
+2026-06-29 16:36:25,482 - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+2026-06-29 16:36:25,482 - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
+2026-06-29 16:36:25,575 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000173F6C00980>
+2026-06-29 16:36:25,575 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x00000173F691F2F0> server_hostname='api.groq.com' timeout=5.0
+2026-06-29 16:36:25,616 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000173F6C10410>
+2026-06-29 16:36:25,616 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2026-06-29 16:36:25,617 - DEBUG - send_request_headers.complete
+2026-06-29 16:36:25,617 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2026-06-29 16:36:25,617 - DEBUG - send_request_body.complete
+2026-06-29 16:36:25,617 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2026-06-29 16:36:25,837 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Mon, 29 Jun 2026 14:36:26 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'96'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bra'), (b'x-request-id', b'req_01kw9wys2aepw89s30s8gcdmnv'), (b'set-cookie', b'__cf_bm=IqtJCs.3ILUcLsTMUXDKY8O5.WIisL.nfY2MpiDSAbE-1782743786.4714088-1.0.1.1-v68O4sejgWG38uF4CFAjYT.qq7CEMgL2IiqlXKKW7rYQkmu42t8eT6tthdV0Jb97dEQuhdrvnkSvYpisftHp2dpFMSFEWO23A9G8bQ._LLti3RAK7Ik9p4jVr6tMnZkJ; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Mon, 29 Jun 2026 15:06:26 GMT'), (b'via', b'1.1 google'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'cf-cache-status', b'DYNAMIC'), (b'CF-RAY', b'a135a9d9798a0386-JNB'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2026-06-29 16:36:25,839 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-06-29 16:36:25,839 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2026-06-29 16:36:25,840 - DEBUG - receive_response_body.complete
+2026-06-29 16:36:25,840 - DEBUG - response_closed.started
+2026-06-29 16:36:25,840 - DEBUG - response_closed.complete
+2026-06-29 16:36:25,840 - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "401 Unauthorized" Headers({'date': 'Mon, 29 Jun 2026 14:36:26 GMT', 'content-type': 'application/json', 'content-length': '96', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bra', 'x-request-id': 'req_01kw9wys2aepw89s30s8gcdmnv', 'set-cookie': '__cf_bm=IqtJCs.3ILUcLsTMUXDKY8O5.WIisL.nfY2MpiDSAbE-1782743786.4714088-1.0.1.1-v68O4sejgWG38uF4CFAjYT.qq7CEMgL2IiqlXKKW7rYQkmu42t8eT6tthdV0Jb97dEQuhdrvnkSvYpisftHp2dpFMSFEWO23A9G8bQ._LLti3RAK7Ik9p4jVr6tMnZkJ; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Mon, 29 Jun 2026 15:06:26 GMT', 'via': '1.1 google', 'strict-transport-security': 'max-age=15552000', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a135a9d9798a0386-JNB', 'alt-svc': 'h3=":443"; ma=86400'})
+2026-06-29 16:36:25,842 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "D:\ETL-Pipeline-First\.venv\Lib\site-packages\groq\_base_client.py", line 1051, in request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\ETL-Pipeline-First\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.groq.com/openai/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-06-29 16:36:25,845 - DEBUG - Not retrying
+2026-06-29 16:36:25,845 - DEBUG - Re-raising status error

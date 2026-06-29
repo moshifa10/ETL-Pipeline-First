@@ -12,7 +12,7 @@ transaction_id,product,category,quantity,price
 11,Chocolate,Snacks,2,25
 11,Chocolate,Snacks,2,25
 12,,Drinks,3,15
-13,Juice,Drinks,4,12
+13,Juice,,4,12
 14,Water,Drinks,1000,10
 15,Chips,Snacks,abc,20
 16,Yogurt,Dairy,5,xyz
@@ -24,4 +24,4 @@ transaction_id,product,category,quantity,price
 22,Coke,Drinks,999999,15
 23,Eggs,Dairy,1,35
 24,Juice,Drinks,2,12
-25,Chocolate,Snacks,3,
+25,Chocolate,Snacks,3,25

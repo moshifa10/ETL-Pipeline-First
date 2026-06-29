@@ -1,3 +1,50 @@
+from src.extract import load_sales
+from src.validate import validate
+from src.transform import transform
+from src.load import load
+
+import logging
+
+
+
+def main():
+    print("Hey")
+
+    logging.basicConfig(level=logging.DEBUG, 
+                        filename="logs/pipeline.log", 
+                        filemode="w",
+                        format="%(asctime)s - %(levelname)s - %(message)s"
+                        )
+
+    logging.info("STARTING THE OPERATION")
+    print("Hey")
+    df = load_sales()
+
+    validate(df)
+    transform(df)
+    load()
+
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -28,21 +75,16 @@
 # 15	Invalid Quantity Type
 
 
-import logging
 
-logging.basicConfig(level=logging.DEBUG, 
-                    filename="logs/pipeline.log", 
-                    filemode="w",
-                    format="%(asctime)s - %(levelname)s - %(message)s"
-                    )
+# logger = logging.getLogger(__name__)
+# logger.info("Test custome logger")
 
-logger = logging.getLogger(__name__)
-logger.info("Test custome logger")
+# # Levels
+# logging.debug("Debugging")
+# logging.info("Information")
+# logging.warning("Warning")
+# logging.error("Error")
+# logging.critical("Critical")
 
-# Levels
-logging.debug("Debugging")
-logging.info("Information")
-logging.warning("Warning")
-logging.error("Error")
-logging.critical("Critical")
+
 
