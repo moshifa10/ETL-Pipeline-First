@@ -5,8 +5,8 @@ transaction_id,product,category,quantity,price
 1004,Eggs,Dairy,4,35
 1005,Chips,Snacks,6,22
 1006,Soap,Household,2,45
-1007,Fanta,Drinks,4,16
-1008,Sprite,Drinks,5,16
+1007,Fanta,,4,16
+1008,Sprite,,5,16
 1009,Juice,Drinks,3,20
 1010,Bread,Food,-2,20
 1011,Coke,Drinks,0,15
@@ -17,7 +17,7 @@ transaction_id,product,category,quantity,price
 1016,Coke,Drinks,3,15
 1016,Coke,Drinks,3,15
 1017,,Food,2,20
-1018,Rice,Food,5,40
+1018,Rice,,5,40
 1019,Beans,Food,10,18
 1020,Water,Drinks,1000,10
 1021,TV,Electronics,1,5000
@@ -35,7 +35,7 @@ transaction_id,product,category,quantity,price
 1033,Ice Cream,Dairy,5,42
 1034,Biscuits,Snacks,8,18
 1035,Chocolate,Snacks,6,25
-1036,Energy Drink,Drinks,7,28
+1036,Energy Drink,,7,28
 1037,Cookies,Snacks,4,20
 1038,Sugar,Food,9,25
 1039,Flour,Food,5,32
@@ -45,7 +45,7 @@ transaction_id,product,category,quantity,price
 1043,Eggs,Dairy,2,35
 1044,Coke,Drinks,5,15
 1045,Water,Drinks,4,10
-1046,Apple Juice,Drinks,3,22
+1046,Apple Juice,,3,22
 1047,Pasta,Food,5,30
 1048,Rice,Food,6,40
 1049,Beans,Food,7,18

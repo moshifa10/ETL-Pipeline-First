@@ -1,11 +1,13 @@
 transaction_id,description
-9,Negative Price
-8,Negative quantities
-10,Negative quantities
-11,Dublicates
-14,We have strange transactions like quantity is bigger than price
-22,We have strange transactions like quantity is bigger than price
-16,Uknown types like we got alphabets or symbols instead of numbers from price
-25,Uknown types like we got alphabets or symbols instead of numbers from price
-15,Uknown types like we got alphabets or symbols instead of numbers from quantity
-12,Product missing
+1012,Negative Price
+1010,Negative quantities
+1011,Negative quantities
+1016,Dublicates
+1020,We have strange transactions like quantity is bigger than price
+1027,We have strange transactions like quantity is bigger than price
+1028,We have strange transactions like quantity is bigger than price
+1029,We have strange transactions like quantity is bigger than price
+1040,We have strange transactions like quantity is bigger than price
+1014,Uknown types like we got alphabets or symbols instead of numbers from price
+1013,Uknown types like we got alphabets or symbols instead of numbers from quantity
+1017,Product missing

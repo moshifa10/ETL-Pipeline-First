@@ -1,7 +1,31 @@
 product,quantity,price,total
-Coke,13,60,780
-Bread,6,60,360
-Milk,12,54,648
-Eggs,3,70,210
-Juice,6,24,144
-Soap,2,30,60
+Coke,13,45,585
+Bread,3,20,60
+Milk,6,36,216
+Eggs,6,70,420
+Chips,6,22,132
+Soap,5,135,675
+Fanta,4,16,64
+Sprite,5,16,80
+Juice,3,20,60
+Rice,11,80,880
+Beans,17,36,612
+TV,1,5000,5000
+Coffee,6,45,270
+Tea,5,30,150
+Butter,4,55,220
+Yogurt,8,18,144
+Cereal,7,60,420
+Detergent,3,90,270
+Toothpaste,4,40,160
+Dish Soap,2,38,76
+Ice Cream,5,42,210
+Biscuits,8,18,144
+Chocolate,6,25,150
+Energy Drink,7,28,196
+Cookies,4,20,80
+Sugar,9,25,225
+Flour,5,32,160
+Water,4,10,40
+Apple Juice,3,22,66
+Pasta,5,30,150
