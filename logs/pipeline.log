@@ -1,124 +1,29 @@
-2026-06-29 17:11:16,429 - INFO - STARTING THE OPERATION
-2026-06-29 17:11:16,429 - INFO - Extracting CSV
-2026-06-29 17:11:16,446 - INFO - VALIDATING DATA
-2026-06-29 17:11:16,446 - CRITICAL - Finding missing columns
-2026-06-29 17:11:16,448 - INFO - Asking Grok for category that is missing while having the product name
-2026-06-29 17:11:17,120 - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-bb1a6f30-b834-456f-8ff8-0ce0025dd853', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a strict data classification assistant. Your task is to look at a product name and return ONLY its category. You must pick exactly one category from this list: Drinks, Food, Dairy, Snacks, Household. Do not write full sentences. Do not add punctuation. Return only the category name.'}, {'role': 'user', 'content': 'Product: Fanta'}], 'model': 'llama-3.3-70b-versatile', 'temperature': 0.0}}
-2026-06-29 17:11:17,204 - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
-2026-06-29 17:11:17,205 - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
-2026-06-29 17:11:17,270 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000029634D54980>
-2026-06-29 17:11:17,270 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000029634A6F2F0> server_hostname='api.groq.com' timeout=5.0
-2026-06-29 17:11:17,307 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000029634D60410>
-2026-06-29 17:11:17,307 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2026-06-29 17:11:17,308 - DEBUG - send_request_headers.complete
-2026-06-29 17:11:17,308 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2026-06-29 17:11:17,309 - DEBUG - send_request_body.complete
-2026-06-29 17:11:17,309 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2026-06-29 17:11:17,786 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 29 Jun 2026 15:11:18 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'999'), (b'x-ratelimit-remaining-tokens', b'11899'), (b'x-ratelimit-reset-requests', b'1m26.4s'), (b'x-ratelimit-reset-tokens', b'505ms'), (b'x-request-id', b'req_01kw9yykpjfexbdyh5s25gwg2w'), (b'set-cookie', b'__cf_bm=BCspP9Fmq_1jBtQ1BfBgMmCr66k3RucrizW21sIbdIs-1782745878.1362963-1.0.1.1-GxkShxke5Fb15Q4Rs2OO7wjN7Dn4phQEQLqnk7ri2NRU.IADGB4bHDZ1dgvOZsc.3B1L.TUObpojKrBK_cZxZygeYyTLDhFvxY.bCWuMo3ZOMNji4w9dgYr8HWPIbSve; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Mon, 29 Jun 2026 15:41:18 GMT'), (b'via', b'1.1 google'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'cf-cache-status', b'DYNAMIC'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a135dcea5b05f17a-JNB'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2026-06-29 17:11:17,787 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 17:11:17,787 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2026-06-29 17:11:17,787 - DEBUG - receive_response_body.complete
-2026-06-29 17:11:17,787 - DEBUG - response_closed.started
-2026-06-29 17:11:17,787 - DEBUG - response_closed.complete
-2026-06-29 17:11:17,788 - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Mon, 29 Jun 2026 15:11:18 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '999', 'x-ratelimit-remaining-tokens': '11899', 'x-ratelimit-reset-requests': '1m26.4s', 'x-ratelimit-reset-tokens': '505ms', 'x-request-id': 'req_01kw9yykpjfexbdyh5s25gwg2w', 'set-cookie': '__cf_bm=BCspP9Fmq_1jBtQ1BfBgMmCr66k3RucrizW21sIbdIs-1782745878.1362963-1.0.1.1-GxkShxke5Fb15Q4Rs2OO7wjN7Dn4phQEQLqnk7ri2NRU.IADGB4bHDZ1dgvOZsc.3B1L.TUObpojKrBK_cZxZygeYyTLDhFvxY.bCWuMo3ZOMNji4w9dgYr8HWPIbSve; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Mon, 29 Jun 2026 15:41:18 GMT', 'via': '1.1 google', 'strict-transport-security': 'max-age=15552000', 'cf-cache-status': 'DYNAMIC', 'content-encoding': 'gzip', 'cf-ray': 'a135dcea5b05f17a-JNB', 'alt-svc': 'h3=":443"; ma=86400'})
-2026-06-29 17:11:17,810 - INFO - Asking Grok for category that is missing while having the product name
-2026-06-29 17:11:18,387 - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-484e3d44-15d3-4790-bde8-d4ca215b4a72', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a strict data classification assistant. Your task is to look at a product name and return ONLY its category. You must pick exactly one category from this list: Drinks, Food, Dairy, Snacks, Household. Do not write full sentences. Do not add punctuation. Return only the category name.'}, {'role': 'user', 'content': 'Product: Sprite'}], 'model': 'llama-3.3-70b-versatile', 'temperature': 0.0}}
-2026-06-29 17:11:18,388 - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
-2026-06-29 17:11:18,388 - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
-2026-06-29 17:11:18,462 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000029634D62C10>
-2026-06-29 17:11:18,463 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000029634A6F9B0> server_hostname='api.groq.com' timeout=5.0
-2026-06-29 17:11:18,514 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000029634C6D480>
-2026-06-29 17:11:18,515 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2026-06-29 17:11:18,516 - DEBUG - send_request_headers.complete
-2026-06-29 17:11:18,516 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2026-06-29 17:11:18,517 - DEBUG - send_request_body.complete
-2026-06-29 17:11:18,517 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2026-06-29 17:11:18,977 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 29 Jun 2026 15:11:19 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'998'), (b'x-ratelimit-remaining-tokens', b'11900'), (b'x-ratelimit-reset-requests', b'2m52.8s'), (b'x-ratelimit-reset-tokens', b'500ms'), (b'x-request-id', b'req_01kw9yymwbfeyvz49hcr5f4n8z'), (b'set-cookie', b'__cf_bm=HWpy7XxcrmfZNo7oo9IhbJAI1fensrb3K0R8HVD3Yzs-1782745879.3464935-1.0.1.1-DBrZ0ZUQDjNb4OLMC6ZDFSQrgpZ2LiutO6YsZPE1IbjL4ANDI.gWKReJWxK27EApI8PDkV_Xby_Ifxd6MO_1UQp9FtoYzLCE3SBRmYPLqCQduGoEOHsYLQvn2G0qVB34; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Mon, 29 Jun 2026 15:41:19 GMT'), (b'via', b'1.1 google'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'cf-cache-status', b'DYNAMIC'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a135dcf1e9c90cfc-JNB'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2026-06-29 17:11:18,979 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 17:11:18,979 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2026-06-29 17:11:18,980 - DEBUG - receive_response_body.complete
-2026-06-29 17:11:18,980 - DEBUG - response_closed.started
-2026-06-29 17:11:18,980 - DEBUG - response_closed.complete
-2026-06-29 17:11:18,980 - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Mon, 29 Jun 2026 15:11:19 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '998', 'x-ratelimit-remaining-tokens': '11900', 'x-ratelimit-reset-requests': '2m52.8s', 'x-ratelimit-reset-tokens': '500ms', 'x-request-id': 'req_01kw9yymwbfeyvz49hcr5f4n8z', 'set-cookie': '__cf_bm=HWpy7XxcrmfZNo7oo9IhbJAI1fensrb3K0R8HVD3Yzs-1782745879.3464935-1.0.1.1-DBrZ0ZUQDjNb4OLMC6ZDFSQrgpZ2LiutO6YsZPE1IbjL4ANDI.gWKReJWxK27EApI8PDkV_Xby_Ifxd6MO_1UQp9FtoYzLCE3SBRmYPLqCQduGoEOHsYLQvn2G0qVB34; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Mon, 29 Jun 2026 15:41:19 GMT', 'via': '1.1 google', 'strict-transport-security': 'max-age=15552000', 'cf-cache-status': 'DYNAMIC', 'content-encoding': 'gzip', 'cf-ray': 'a135dcf1e9c90cfc-JNB', 'alt-svc': 'h3=":443"; ma=86400'})
-2026-06-29 17:11:18,987 - INFO - Asking Grok for category that is missing while having the product name
-2026-06-29 17:11:19,439 - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-693e09e4-ea1e-412a-bc58-37a3f57460b2', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a strict data classification assistant. Your task is to look at a product name and return ONLY its category. You must pick exactly one category from this list: Drinks, Food, Dairy, Snacks, Household. Do not write full sentences. Do not add punctuation. Return only the category name.'}, {'role': 'user', 'content': 'Product: Rice'}], 'model': 'llama-3.3-70b-versatile', 'temperature': 0.0}}
-2026-06-29 17:11:19,440 - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
-2026-06-29 17:11:19,440 - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
-2026-06-29 17:11:19,468 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000029634C6D940>
-2026-06-29 17:11:19,468 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000029634A07930> server_hostname='api.groq.com' timeout=5.0
-2026-06-29 17:11:19,517 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000029634C76B10>
-2026-06-29 17:11:19,517 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2026-06-29 17:11:19,517 - DEBUG - send_request_headers.complete
-2026-06-29 17:11:19,518 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2026-06-29 17:11:19,518 - DEBUG - send_request_body.complete
-2026-06-29 17:11:19,518 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2026-06-29 17:11:20,049 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 29 Jun 2026 15:11:20 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'997'), (b'x-ratelimit-remaining-tokens', b'11900'), (b'x-ratelimit-reset-requests', b'4m19.2s'), (b'x-ratelimit-reset-tokens', b'500ms'), (b'x-request-id', b'req_01kw9yynvmem2tbxwj3xbxhqm4'), (b'set-cookie', b'__cf_bm=ELxCw4ynN2X0hUItaTGZMYt1.FogqsBjV1FZ6mHO1Xk-1782745880.3466818-1.0.1.1-t.bzV8pw3vJOJjpRQMpXO7u5gcM50aeCrITne1Jdy4R07kWBf485XBF0Bix7T6zQTWskE0LJL1v1lkFNy94riYZVJ7d032ELBmgNVZM9maRzGFrkM_T0dZJWfykeBs1S; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Mon, 29 Jun 2026 15:41:20 GMT'), (b'via', b'1.1 google'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'cf-cache-status', b'DYNAMIC'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a135dcf82d60b6dc-JNB'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2026-06-29 17:11:20,050 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 17:11:20,051 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2026-06-29 17:11:20,051 - DEBUG - receive_response_body.complete
-2026-06-29 17:11:20,052 - DEBUG - response_closed.started
-2026-06-29 17:11:20,052 - DEBUG - response_closed.complete
-2026-06-29 17:11:20,052 - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Mon, 29 Jun 2026 15:11:20 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '997', 'x-ratelimit-remaining-tokens': '11900', 'x-ratelimit-reset-requests': '4m19.2s', 'x-ratelimit-reset-tokens': '500ms', 'x-request-id': 'req_01kw9yynvmem2tbxwj3xbxhqm4', 'set-cookie': '__cf_bm=ELxCw4ynN2X0hUItaTGZMYt1.FogqsBjV1FZ6mHO1Xk-1782745880.3466818-1.0.1.1-t.bzV8pw3vJOJjpRQMpXO7u5gcM50aeCrITne1Jdy4R07kWBf485XBF0Bix7T6zQTWskE0LJL1v1lkFNy94riYZVJ7d032ELBmgNVZM9maRzGFrkM_T0dZJWfykeBs1S; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Mon, 29 Jun 2026 15:41:20 GMT', 'via': '1.1 google', 'strict-transport-security': 'max-age=15552000', 'cf-cache-status': 'DYNAMIC', 'content-encoding': 'gzip', 'cf-ray': 'a135dcf82d60b6dc-JNB', 'alt-svc': 'h3=":443"; ma=86400'})
-2026-06-29 17:11:20,063 - INFO - Asking Grok for category that is missing while having the product name
-2026-06-29 17:11:21,182 - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-8784502c-e628-4cf7-9fb0-618581bd38e2', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a strict data classification assistant. Your task is to look at a product name and return ONLY its category. You must pick exactly one category from this list: Drinks, Food, Dairy, Snacks, Household. Do not write full sentences. Do not add punctuation. Return only the category name.'}, {'role': 'user', 'content': 'Product: Energy Drink'}], 'model': 'llama-3.3-70b-versatile', 'temperature': 0.0}}
-2026-06-29 17:11:21,183 - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
-2026-06-29 17:11:21,183 - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
-2026-06-29 17:11:21,210 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000029634CCACF0>
-2026-06-29 17:11:21,210 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000029634A07AD0> server_hostname='api.groq.com' timeout=5.0
-2026-06-29 17:11:21,243 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000029634CCA9C0>
-2026-06-29 17:11:21,243 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2026-06-29 17:11:21,244 - DEBUG - send_request_headers.complete
-2026-06-29 17:11:21,244 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2026-06-29 17:11:21,244 - DEBUG - send_request_body.complete
-2026-06-29 17:11:21,244 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2026-06-29 17:11:21,787 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 29 Jun 2026 15:11:22 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'996'), (b'x-ratelimit-remaining-tokens', b'11899'), (b'x-ratelimit-reset-requests', b'5m45.6s'), (b'x-ratelimit-reset-tokens', b'505ms'), (b'x-request-id', b'req_01kw9yyqhkefe9xge3zfqvzmv4'), (b'set-cookie', b'__cf_bm=A2QXUBWySjLgcRlEJGv.z8WhHKakIUuEsz6RT4iZBOk-1782745882.0718822-1.0.1.1-F0x1LvQozER1jED2dGDB0LmknxQC3IgttFUJA5QeLzr6Xf6w41bW8JKaFkBvgSV0P9a3RVrlkzao.Ah.yupUDFncqtm7I0f8zRwiecYAS7wZOePV_sfNVdsvygmvwuZ8; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Mon, 29 Jun 2026 15:41:22 GMT'), (b'via', b'1.1 google'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'cf-cache-status', b'DYNAMIC'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a135dd02fa0503a2-JNB'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2026-06-29 17:11:21,788 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 17:11:21,788 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2026-06-29 17:11:21,788 - DEBUG - receive_response_body.complete
-2026-06-29 17:11:21,788 - DEBUG - response_closed.started
-2026-06-29 17:11:21,789 - DEBUG - response_closed.complete
-2026-06-29 17:11:21,789 - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Mon, 29 Jun 2026 15:11:22 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '996', 'x-ratelimit-remaining-tokens': '11899', 'x-ratelimit-reset-requests': '5m45.6s', 'x-ratelimit-reset-tokens': '505ms', 'x-request-id': 'req_01kw9yyqhkefe9xge3zfqvzmv4', 'set-cookie': '__cf_bm=A2QXUBWySjLgcRlEJGv.z8WhHKakIUuEsz6RT4iZBOk-1782745882.0718822-1.0.1.1-F0x1LvQozER1jED2dGDB0LmknxQC3IgttFUJA5QeLzr6Xf6w41bW8JKaFkBvgSV0P9a3RVrlkzao.Ah.yupUDFncqtm7I0f8zRwiecYAS7wZOePV_sfNVdsvygmvwuZ8; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Mon, 29 Jun 2026 15:41:22 GMT', 'via': '1.1 google', 'strict-transport-security': 'max-age=15552000', 'cf-cache-status': 'DYNAMIC', 'content-encoding': 'gzip', 'cf-ray': 'a135dd02fa0503a2-JNB', 'alt-svc': 'h3=":443"; ma=86400'})
-2026-06-29 17:11:21,794 - INFO - Asking Grok for category that is missing while having the product name
-2026-06-29 17:11:22,653 - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-3a679f2b-bc0b-4021-bff2-3e5b123b9259', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a strict data classification assistant. Your task is to look at a product name and return ONLY its category. You must pick exactly one category from this list: Drinks, Food, Dairy, Snacks, Household. Do not write full sentences. Do not add punctuation. Return only the category name.'}, {'role': 'user', 'content': 'Product: Apple Juice'}], 'model': 'llama-3.3-70b-versatile', 'temperature': 0.0}}
-2026-06-29 17:11:22,654 - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
-2026-06-29 17:11:22,655 - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=5.0 socket_options=None
-2026-06-29 17:11:22,701 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000029634CF7D50>
-2026-06-29 17:11:22,701 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000029634C48820> server_hostname='api.groq.com' timeout=5.0
-2026-06-29 17:11:22,745 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000029634CF7E50>
-2026-06-29 17:11:22,746 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2026-06-29 17:11:22,746 - DEBUG - send_request_headers.complete
-2026-06-29 17:11:22,746 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2026-06-29 17:11:22,747 - DEBUG - send_request_body.complete
-2026-06-29 17:11:22,747 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2026-06-29 17:11:23,854 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 29 Jun 2026 15:11:24 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'bra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'12000'), (b'x-ratelimit-remaining-requests', b'995'), (b'x-ratelimit-remaining-tokens', b'11897'), (b'x-ratelimit-reset-requests', b'7m12s'), (b'x-ratelimit-reset-tokens', b'515ms'), (b'x-request-id', b'req_01kw9yysfmefhrzhqs5swdfnrf'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=qdJI7lpRYNPS1uF74sfUYrX4rjE4gr2ui9v1fzE3HqY-1782745883.5789077-1.0.1.1-3I_5nP1ZcCn26ZoRrMkeNHJlVMJLakBLcR2JvNuY4uESjWk2IqexO2NXFVH88nw.t1bZ9iDGJJfUKH5XV6qS2nR64fTrDzuEE2rAKOQghDBB11knH9r2O0RWbdY6x4QQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Mon, 29 Jun 2026 15:41:24 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a135dd0c5b830392-JNB'), (b'alt-svc', b'h3=":443"; ma=86400')])
-2026-06-29 17:11:23,855 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-29 17:11:23,855 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2026-06-29 17:11:23,855 - DEBUG - receive_response_body.complete
-2026-06-29 17:11:23,856 - DEBUG - response_closed.started
-2026-06-29 17:11:23,856 - DEBUG - response_closed.complete
-2026-06-29 17:11:23,856 - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Mon, 29 Jun 2026 15:11:24 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'bra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '12000', 'x-ratelimit-remaining-requests': '995', 'x-ratelimit-remaining-tokens': '11897', 'x-ratelimit-reset-requests': '7m12s', 'x-ratelimit-reset-tokens': '515ms', 'x-request-id': 'req_01kw9yysfmefhrzhqs5swdfnrf', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=qdJI7lpRYNPS1uF74sfUYrX4rjE4gr2ui9v1fzE3HqY-1782745883.5789077-1.0.1.1-3I_5nP1ZcCn26ZoRrMkeNHJlVMJLakBLcR2JvNuY4uESjWk2IqexO2NXFVH88nw.t1bZ9iDGJJfUKH5XV6qS2nR64fTrDzuEE2rAKOQghDBB11knH9r2O0RWbdY6x4QQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Mon, 29 Jun 2026 15:41:24 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a135dd0c5b830392-JNB', 'alt-svc': 'h3=":443"; ma=86400'})
-2026-06-29 17:11:23,869 - ERROR - Finding dublicates Transactions
-2026-06-29 17:11:23,872 - CRITICAL - Finding Strange prices
-2026-06-29 17:11:23,878 - INFO - Writing reports for valid and invalid with total receipt records.
-2026-06-29 17:11:23,879 - ERROR - Writing invalid transactions to csv with its reasoning
-2026-06-29 17:11:24,118 - INFO - TRANSFORMING DATA
-2026-06-29 17:11:24,134 - INFO - Finding valid transactions
-2026-06-29 17:11:24,143 - INFO - Writing valid transactions to the csv. FIleName: reports\valid_transactions.csv
-2026-06-29 17:11:24,148 - INFO - Calculating the revenue by product
-2026-06-29 17:11:24,155 - INFO - Writing total sales by Product to reports\revenue_by_product.csv
-2026-06-29 17:11:24,161 - INFO - Calculating revenue by category
-2026-06-29 17:11:24,169 - INFO - Writing total sales by category to reports\revenue_by_category.csv
-2026-06-29 17:11:24,172 - INFO - LOADING THE DATA TO THE DATABASE
-2026-06-29 17:11:24,174 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,176 - INFO - PRAGMA main.table_info("sales")
-2026-06-29 17:11:24,176 - INFO - [raw sql] ()
-2026-06-29 17:11:24,178 - INFO - PRAGMA temp.table_info("sales")
-2026-06-29 17:11:24,179 - INFO - [raw sql] ()
-2026-06-29 17:11:24,181 - INFO - PRAGMA main.table_info("invalid_transaction")
-2026-06-29 17:11:24,182 - INFO - [raw sql] ()
-2026-06-29 17:11:24,183 - INFO - PRAGMA temp.table_info("invalid_transaction")
-2026-06-29 17:11:24,184 - INFO - [raw sql] ()
-2026-06-29 17:11:24,185 - INFO - 
+2026-09-25 02:05:23,553 - INFO - STARTING THE OPERATION
+2026-09-25 02:05:23,553 - INFO - Extracting CSV
+2026-09-25 02:05:23,565 - INFO - VALIDATING DATA
+2026-09-25 02:05:23,565 - CRITICAL - Finding missing columns
+2026-09-25 02:05:23,581 - ERROR - Finding dublicates Transactions
+2026-09-25 02:05:23,585 - CRITICAL - Finding Strange prices
+2026-09-25 02:05:23,594 - INFO - Writing reports for valid and invalid with total receipt records.
+2026-09-25 02:05:23,595 - ERROR - Writing invalid transactions to csv with its reasoning
+2026-09-25 02:05:23,717 - INFO - TRANSFORMING DATA
+2026-09-25 02:05:23,724 - INFO - Finding valid transactions
+2026-09-25 02:05:23,732 - INFO - Writing valid transactions to the csv. FIleName: reports\valid_transactions.csv
+2026-09-25 02:05:23,736 - INFO - Calculating the revenue by product
+2026-09-25 02:05:23,745 - INFO - Writing total sales by Product to reports\revenue_by_product.csv
+2026-09-25 02:05:23,749 - INFO - Calculating revenue by category
+2026-09-25 02:05:23,755 - INFO - Writing total sales by category to reports\revenue_by_category.csv
+2026-09-25 02:05:23,760 - INFO - LOADING THE DATA TO THE DATABASE
+2026-09-25 02:05:23,765 - INFO - BEGIN (implicit)
+2026-09-25 02:05:23,766 - INFO - PRAGMA main.table_info("sales")
+2026-09-25 02:05:23,766 - INFO - [raw sql] ()
+2026-09-25 02:05:23,769 - INFO - PRAGMA temp.table_info("sales")
+2026-09-25 02:05:23,770 - INFO - [raw sql] ()
+2026-09-25 02:05:23,770 - INFO - PRAGMA main.table_info("invalid_transaction")
+2026-09-25 02:05:23,771 - INFO - [raw sql] ()
+2026-09-25 02:05:23,772 - INFO - PRAGMA temp.table_info("invalid_transaction")
+2026-09-25 02:05:23,774 - INFO - [raw sql] ()
+2026-09-25 02:05:23,779 - INFO - 
 CREATE TABLE sales (
 	id INTEGER NOT NULL, 
 	transaction_id INTEGER NOT NULL, 
@@ -132,8 +37,8 @@ CREATE TABLE sales (
 )
 
 
-2026-06-29 17:11:24,186 - INFO - [no key 0.00046s] ()
-2026-06-29 17:11:24,296 - INFO - 
+2026-09-25 02:05:23,781 - INFO - [no key 0.00138s] ()
+2026-09-25 02:05:23,798 - INFO - 
 CREATE TABLE invalid_transaction (
 	id INTEGER NOT NULL, 
 	transaction_id INTEGER NOT NULL, 
@@ -147,655 +52,655 @@ CREATE TABLE invalid_transaction (
 )
 
 
-2026-06-29 17:11:24,299 - INFO - [no key 0.00248s] ()
-2026-06-29 17:11:24,340 - INFO - COMMIT
-2026-06-29 17:11:24,368 - INFO - Add transactions to the database
-2026-06-29 17:11:24,368 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:24,374 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,382 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:23,798 - INFO - [no key 0.00054s] ()
+2026-09-25 02:05:23,807 - INFO - COMMIT
+2026-09-25 02:05:23,818 - INFO - Add transactions to the database
+2026-09-25 02:05:23,818 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:23,830 - INFO - BEGIN (implicit)
+2026-09-25 02:05:23,841 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:24,383 - INFO - [generated in 0.00072s] (1001, 1, 0)
-2026-06-29 17:11:24,388 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:24,389 - INFO - [generated in 0.00078s] (1001, 'Coke', 'Drinks', 5, 15, 75, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:24,392 - INFO - COMMIT
-2026-06-29 17:11:24,431 - INFO - Add transactions to the database
-2026-06-29 17:11:24,431 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:24,432 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,433 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:23,842 - INFO - [generated in 0.00138s] (1001, 1, 0)
+2026-09-25 02:05:23,848 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:23,849 - INFO - [generated in 0.00097s] (1001, 'Coke', 'Drinks', 5, 15, 75, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:23,863 - INFO - COMMIT
+2026-09-25 02:05:23,872 - INFO - Add transactions to the database
+2026-09-25 02:05:23,873 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:23,875 - INFO - BEGIN (implicit)
+2026-09-25 02:05:23,878 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:24,433 - INFO - [cached since 0.05161s ago] (1002, 1, 0)
-2026-06-29 17:11:24,435 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:24,436 - INFO - [cached since 0.04758s ago] (1002, 'Bread', 'Food', 3, 20, 60, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:24,437 - INFO - COMMIT
-2026-06-29 17:11:24,477 - INFO - Add transactions to the database
-2026-06-29 17:11:24,477 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:24,478 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,479 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:23,880 - INFO - [cached since 0.03943s ago] (1002, 1, 0)
+2026-09-25 02:05:23,883 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:23,884 - INFO - [cached since 0.03628s ago] (1002, 'Bread', 'Food', 3, 20, 60, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:23,889 - INFO - COMMIT
+2026-09-25 02:05:23,897 - INFO - Add transactions to the database
+2026-09-25 02:05:23,897 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:23,898 - INFO - BEGIN (implicit)
+2026-09-25 02:05:23,899 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:24,479 - INFO - [cached since 0.09741s ago] (1003, 1, 0)
-2026-06-29 17:11:24,481 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:24,481 - INFO - [cached since 0.09331s ago] (1003, 'Milk', 'Dairy', 2, 18, 36, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:24,484 - INFO - COMMIT
-2026-06-29 17:11:24,522 - INFO - Add transactions to the database
-2026-06-29 17:11:24,522 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:24,523 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,524 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:23,901 - INFO - [cached since 0.05984s ago] (1003, 1, 0)
+2026-09-25 02:05:23,905 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:23,906 - INFO - [cached since 0.05819s ago] (1003, 'Milk', 'Dairy', 2, 18, 36, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:23,914 - INFO - COMMIT
+2026-09-25 02:05:23,924 - INFO - Add transactions to the database
+2026-09-25 02:05:23,924 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:23,926 - INFO - BEGIN (implicit)
+2026-09-25 02:05:23,930 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:24,525 - INFO - [cached since 0.1422s ago] (1004, 1, 0)
-2026-06-29 17:11:24,527 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:24,528 - INFO - [cached since 0.1396s ago] (1004, 'Eggs', 'Dairy', 4, 35, 140, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:24,530 - INFO - COMMIT
-2026-06-29 17:11:24,568 - INFO - Add transactions to the database
-2026-06-29 17:11:24,568 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:24,569 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,570 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:23,930 - INFO - [cached since 0.08927s ago] (1004, 1, 0)
+2026-09-25 02:05:23,931 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:23,932 - INFO - [cached since 0.08415s ago] (1004, 'Eggs', 'Dairy', 4, 35, 140, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:23,936 - INFO - COMMIT
+2026-09-25 02:05:23,948 - INFO - Add transactions to the database
+2026-09-25 02:05:23,948 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:23,949 - INFO - BEGIN (implicit)
+2026-09-25 02:05:23,950 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:24,570 - INFO - [cached since 0.1882s ago] (1005, 1, 0)
-2026-06-29 17:11:24,571 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:24,572 - INFO - [cached since 0.1838s ago] (1005, 'Chips', 'Snacks', 6, 22, 132, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:24,574 - INFO - COMMIT
-2026-06-29 17:11:24,627 - INFO - Add transactions to the database
-2026-06-29 17:11:24,627 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:24,628 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,631 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:23,950 - INFO - [cached since 0.1096s ago] (1005, 1, 0)
+2026-09-25 02:05:23,952 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:23,952 - INFO - [cached since 0.1047s ago] (1005, 'Chips', 'Snacks', 6, 22, 132, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:23,961 - INFO - COMMIT
+2026-09-25 02:05:23,965 - INFO - Add transactions to the database
+2026-09-25 02:05:23,966 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:23,967 - INFO - BEGIN (implicit)
+2026-09-25 02:05:23,969 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:24,631 - INFO - [cached since 0.2491s ago] (1006, 1, 0)
-2026-06-29 17:11:24,633 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:24,633 - INFO - [cached since 0.245s ago] (1006, 'Soap', 'Household', 2, 45, 90, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:24,635 - INFO - COMMIT
-2026-06-29 17:11:24,671 - INFO - Add transactions to the database
-2026-06-29 17:11:24,671 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:24,672 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,673 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:23,969 - INFO - [cached since 0.1283s ago] (1006, 1, 0)
+2026-09-25 02:05:23,973 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:23,976 - INFO - [cached since 0.1286s ago] (1006, 'Soap', 'Household', 2, 45, 90, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:23,982 - INFO - COMMIT
+2026-09-25 02:05:23,997 - INFO - Add transactions to the database
+2026-09-25 02:05:23,998 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:23,998 - INFO - BEGIN (implicit)
+2026-09-25 02:05:23,999 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:24,673 - INFO - [cached since 0.2911s ago] (1007, 1, 0)
-2026-06-29 17:11:24,676 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:24,677 - INFO - [cached since 0.2893s ago] (1007, 'Fanta', 'Drinks', 4, 16, 64, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:24,699 - INFO - COMMIT
-2026-06-29 17:11:24,750 - INFO - Add transactions to the database
-2026-06-29 17:11:24,750 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:24,751 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,752 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,000 - INFO - [cached since 0.1592s ago] (1007, 1, 0)
+2026-09-25 02:05:24,003 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,003 - INFO - [cached since 0.1556s ago] (1007, 'Fanta', 'Drinks', 4, 16, 64, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,011 - INFO - COMMIT
+2026-09-25 02:05:24,015 - INFO - Add transactions to the database
+2026-09-25 02:05:24,015 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,016 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,017 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:24,752 - INFO - [cached since 0.3702s ago] (1008, 1, 0)
-2026-06-29 17:11:24,754 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:24,754 - INFO - [cached since 0.3661s ago] (1008, 'Sprite', 'Drinks', 5, 16, 80, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:24,756 - INFO - COMMIT
-2026-06-29 17:11:24,796 - INFO - Add transactions to the database
-2026-06-29 17:11:24,796 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:24,797 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,797 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,019 - INFO - [cached since 0.1783s ago] (1008, 1, 0)
+2026-09-25 02:05:24,022 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,025 - INFO - [cached since 0.1768s ago] (1008, 'Sprite', 'Drinks', 5, 16, 80, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,030 - INFO - COMMIT
+2026-09-25 02:05:24,040 - INFO - Add transactions to the database
+2026-09-25 02:05:24,040 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,041 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,043 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:24,798 - INFO - [cached since 0.4159s ago] (1009, 1, 0)
-2026-06-29 17:11:24,799 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:24,799 - INFO - [cached since 0.4114s ago] (1009, 'Juice', 'Drinks', 3, 20, 60, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:24,801 - INFO - COMMIT
-2026-06-29 17:11:24,832 - INFO - Add transactions to the database
-2026-06-29 17:11:24,832 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:24,833 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,838 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,044 - INFO - [cached since 0.2033s ago] (1009, 1, 0)
+2026-09-25 02:05:24,047 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,050 - INFO - [cached since 0.2022s ago] (1009, 'Juice', 'Drinks', 3, 20, 60, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,061 - INFO - COMMIT
+2026-09-25 02:05:24,068 - INFO - Add transactions to the database
+2026-09-25 02:05:24,068 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,069 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,070 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:24,840 - INFO - [cached since 0.4584s ago] (1015, 1, 0)
-2026-06-29 17:11:24,842 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:24,843 - INFO - [cached since 0.4555s ago] (1015, 'Coke', 'Drinks', 3, 15, 45, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:24,846 - INFO - COMMIT
-2026-06-29 17:11:24,878 - INFO - Add transactions to the database
-2026-06-29 17:11:24,878 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:24,879 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,880 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,074 - INFO - [cached since 0.2337s ago] (1015, 1, 0)
+2026-09-25 02:05:24,078 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,079 - INFO - [cached since 0.2309s ago] (1015, 'Coke', 'Drinks', 3, 15, 45, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,083 - INFO - COMMIT
+2026-09-25 02:05:24,094 - INFO - Add transactions to the database
+2026-09-25 02:05:24,094 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,095 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,096 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:24,880 - INFO - [cached since 0.4983s ago] (1018, 1, 0)
-2026-06-29 17:11:24,881 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:24,882 - INFO - [cached since 0.4939s ago] (1018, 'Rice', 'Food', 5, 40, 200, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:24,884 - INFO - COMMIT
-2026-06-29 17:11:24,925 - INFO - Add transactions to the database
-2026-06-29 17:11:24,926 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:24,927 - INFO - BEGIN (implicit)
-2026-06-29 17:11:24,940 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,096 - INFO - [cached since 0.2554s ago] (1018, 1, 0)
+2026-09-25 02:05:24,098 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,098 - INFO - [cached since 0.2503s ago] (1018, 'Rice', 'Food', 5, 40, 200, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,101 - INFO - COMMIT
+2026-09-25 02:05:24,112 - INFO - Add transactions to the database
+2026-09-25 02:05:24,116 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,117 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,118 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:24,948 - INFO - [cached since 0.5659s ago] (1019, 1, 0)
-2026-06-29 17:11:24,950 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:24,951 - INFO - [cached since 0.5627s ago] (1019, 'Beans', 'Food', 10, 18, 180, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:24,954 - INFO - COMMIT
-2026-06-29 17:11:25,005 - INFO - Add transactions to the database
-2026-06-29 17:11:25,005 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:25,006 - INFO - BEGIN (implicit)
-2026-06-29 17:11:25,017 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,118 - INFO - [cached since 0.2773s ago] (1019, 1, 0)
+2026-09-25 02:05:24,119 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,120 - INFO - [cached since 0.2721s ago] (1019, 'Beans', 'Food', 10, 18, 180, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,127 - INFO - COMMIT
+2026-09-25 02:05:24,132 - INFO - Add transactions to the database
+2026-09-25 02:05:24,132 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,133 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,133 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:25,054 - INFO - [cached since 0.6721s ago] (1021, 1, 0)
-2026-06-29 17:11:25,151 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:25,304 - INFO - [cached since 0.916s ago] (1021, 'TV', 'Electronics', 1, 5000, 5000, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:25,404 - INFO - COMMIT
-2026-06-29 17:11:25,471 - INFO - Add transactions to the database
-2026-06-29 17:11:25,471 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:25,472 - INFO - BEGIN (implicit)
-2026-06-29 17:11:25,495 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,134 - INFO - [cached since 0.2929s ago] (1021, 1, 0)
+2026-09-25 02:05:24,135 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,136 - INFO - [cached since 0.2881s ago] (1021, 'TV', 'Electronics', 1, 5000, 5000, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,145 - INFO - COMMIT
+2026-09-25 02:05:24,158 - INFO - Add transactions to the database
+2026-09-25 02:05:24,158 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,161 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,165 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:25,519 - INFO - [cached since 1.137s ago] (1022, 1, 0)
-2026-06-29 17:11:25,541 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:25,558 - INFO - [cached since 1.169s ago] (1022, 'Coffee', 'Drinks', 6, 45, 270, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:25,562 - INFO - COMMIT
-2026-06-29 17:11:25,673 - INFO - Add transactions to the database
-2026-06-29 17:11:25,673 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:25,674 - INFO - BEGIN (implicit)
-2026-06-29 17:11:25,718 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,167 - INFO - [cached since 0.3262s ago] (1022, 1, 0)
+2026-09-25 02:05:24,172 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,175 - INFO - [cached since 0.3269s ago] (1022, 'Coffee', 'Drinks', 6, 45, 270, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,187 - INFO - COMMIT
+2026-09-25 02:05:24,199 - INFO - Add transactions to the database
+2026-09-25 02:05:24,200 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,201 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,203 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:25,762 - INFO - [cached since 1.38s ago] (1023, 1, 0)
-2026-06-29 17:11:25,803 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:25,844 - INFO - [cached since 1.456s ago] (1023, 'Tea', 'Drinks', 5, 30, 150, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:25,852 - INFO - COMMIT
-2026-06-29 17:11:25,930 - INFO - Add transactions to the database
-2026-06-29 17:11:25,930 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:25,931 - INFO - BEGIN (implicit)
-2026-06-29 17:11:25,951 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,209 - INFO - [cached since 0.3681s ago] (1023, 1, 0)
+2026-09-25 02:05:24,216 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,217 - INFO - [cached since 0.3693s ago] (1023, 'Tea', 'Drinks', 5, 30, 150, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,231 - INFO - COMMIT
+2026-09-25 02:05:24,247 - INFO - Add transactions to the database
+2026-09-25 02:05:24,248 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,248 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,253 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:25,964 - INFO - [cached since 1.582s ago] (1024, 1, 0)
-2026-06-29 17:11:25,970 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:25,980 - INFO - [cached since 1.592s ago] (1024, 'Butter', 'Dairy', 4, 55, 220, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:25,984 - INFO - COMMIT
-2026-06-29 17:11:26,033 - INFO - Add transactions to the database
-2026-06-29 17:11:26,033 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,033 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,057 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,258 - INFO - [cached since 0.4171s ago] (1024, 1, 0)
+2026-09-25 02:05:24,262 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,269 - INFO - [cached since 0.4216s ago] (1024, 'Butter', 'Dairy', 4, 55, 220, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,287 - INFO - COMMIT
+2026-09-25 02:05:24,297 - INFO - Add transactions to the database
+2026-09-25 02:05:24,297 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,299 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,316 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,069 - INFO - [cached since 1.687s ago] (1025, 1, 0)
-2026-06-29 17:11:26,114 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,117 - INFO - [cached since 1.729s ago] (1025, 'Yogurt', 'Dairy', 8, 18, 144, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,121 - INFO - COMMIT
-2026-06-29 17:11:26,156 - INFO - Add transactions to the database
-2026-06-29 17:11:26,156 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,157 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,157 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,319 - INFO - [cached since 0.4787s ago] (1025, 1, 0)
+2026-09-25 02:05:24,323 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,331 - INFO - [cached since 0.4831s ago] (1025, 'Yogurt', 'Dairy', 8, 18, 144, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,367 - INFO - COMMIT
+2026-09-25 02:05:24,378 - INFO - Add transactions to the database
+2026-09-25 02:05:24,378 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,379 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,380 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,159 - INFO - [cached since 1.777s ago] (1026, 1, 0)
-2026-06-29 17:11:26,162 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,162 - INFO - [cached since 1.774s ago] (1026, 'Cereal', 'Food', 7, 60, 420, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,164 - INFO - COMMIT
-2026-06-29 17:11:26,202 - INFO - Add transactions to the database
-2026-06-29 17:11:26,202 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,202 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,203 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,380 - INFO - [cached since 0.5397s ago] (1026, 1, 0)
+2026-09-25 02:05:24,382 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,382 - INFO - [cached since 0.5344s ago] (1026, 'Cereal', 'Food', 7, 60, 420, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,385 - INFO - COMMIT
+2026-09-25 02:05:24,397 - INFO - Add transactions to the database
+2026-09-25 02:05:24,397 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,398 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,399 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,204 - INFO - [cached since 1.822s ago] (1030, 1, 0)
-2026-06-29 17:11:26,205 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,205 - INFO - [cached since 1.817s ago] (1030, 'Detergent', 'Household', 3, 90, 270, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,271 - INFO - COMMIT
-2026-06-29 17:11:26,314 - INFO - Add transactions to the database
-2026-06-29 17:11:26,315 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,315 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,317 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,399 - INFO - [cached since 0.5582s ago] (1030, 1, 0)
+2026-09-25 02:05:24,400 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,401 - INFO - [cached since 0.5528s ago] (1030, 'Detergent', 'Household', 3, 90, 270, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,403 - INFO - COMMIT
+2026-09-25 02:05:24,414 - INFO - Add transactions to the database
+2026-09-25 02:05:24,414 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,415 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,415 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,318 - INFO - [cached since 1.936s ago] (1031, 1, 0)
-2026-06-29 17:11:26,319 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,320 - INFO - [cached since 1.932s ago] (1031, 'Toothpaste', 'Household', 4, 40, 160, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,324 - INFO - COMMIT
-2026-06-29 17:11:26,371 - INFO - Add transactions to the database
-2026-06-29 17:11:26,372 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,372 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,377 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,416 - INFO - [cached since 0.5749s ago] (1031, 1, 0)
+2026-09-25 02:05:24,417 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,417 - INFO - [cached since 0.5694s ago] (1031, 'Toothpaste', 'Household', 4, 40, 160, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,420 - INFO - COMMIT
+2026-09-25 02:05:24,433 - INFO - Add transactions to the database
+2026-09-25 02:05:24,433 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,433 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,434 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,378 - INFO - [cached since 1.996s ago] (1032, 1, 0)
-2026-06-29 17:11:26,379 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,381 - INFO - [cached since 1.993s ago] (1032, 'Dish Soap', 'Household', 2, 38, 76, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,387 - INFO - COMMIT
-2026-06-29 17:11:26,429 - INFO - Add transactions to the database
-2026-06-29 17:11:26,429 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,430 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,432 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,434 - INFO - [cached since 0.5937s ago] (1032, 1, 0)
+2026-09-25 02:05:24,436 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,439 - INFO - [cached since 0.5914s ago] (1032, 'Dish Soap', 'Household', 2, 38, 76, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,448 - INFO - COMMIT
+2026-09-25 02:05:24,464 - INFO - Add transactions to the database
+2026-09-25 02:05:24,464 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,466 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,468 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,433 - INFO - [cached since 2.051s ago] (1033, 1, 0)
-2026-06-29 17:11:26,435 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,438 - INFO - [cached since 2.05s ago] (1033, 'Ice Cream', 'Dairy', 5, 42, 210, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,440 - INFO - COMMIT
-2026-06-29 17:11:26,485 - INFO - Add transactions to the database
-2026-06-29 17:11:26,486 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,486 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,488 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,469 - INFO - [cached since 0.628s ago] (1033, 1, 0)
+2026-09-25 02:05:24,474 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,477 - INFO - [cached since 0.6294s ago] (1033, 'Ice Cream', 'Dairy', 5, 42, 210, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,481 - INFO - COMMIT
+2026-09-25 02:05:24,485 - INFO - Add transactions to the database
+2026-09-25 02:05:24,485 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,486 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,487 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,489 - INFO - [cached since 2.107s ago] (1034, 1, 0)
-2026-06-29 17:11:26,490 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,491 - INFO - [cached since 2.103s ago] (1034, 'Biscuits', 'Snacks', 8, 18, 144, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,495 - INFO - COMMIT
-2026-06-29 17:11:26,532 - INFO - Add transactions to the database
-2026-06-29 17:11:26,532 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,533 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,533 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,490 - INFO - [cached since 0.6492s ago] (1034, 1, 0)
+2026-09-25 02:05:24,494 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,496 - INFO - [cached since 0.6481s ago] (1034, 'Biscuits', 'Snacks', 8, 18, 144, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,499 - INFO - COMMIT
+2026-09-25 02:05:24,503 - INFO - Add transactions to the database
+2026-09-25 02:05:24,503 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,506 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,507 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,533 - INFO - [cached since 2.152s ago] (1035, 1, 0)
-2026-06-29 17:11:26,534 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,535 - INFO - [cached since 2.147s ago] (1035, 'Chocolate', 'Snacks', 6, 25, 150, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,537 - INFO - COMMIT
-2026-06-29 17:11:26,568 - INFO - Add transactions to the database
-2026-06-29 17:11:26,568 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,569 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,569 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,511 - INFO - [cached since 0.6699s ago] (1035, 1, 0)
+2026-09-25 02:05:24,512 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,513 - INFO - [cached since 0.6651s ago] (1035, 'Chocolate', 'Snacks', 6, 25, 150, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,515 - INFO - COMMIT
+2026-09-25 02:05:24,522 - INFO - Add transactions to the database
+2026-09-25 02:05:24,523 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,524 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,526 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,570 - INFO - [cached since 2.188s ago] (1036, 1, 0)
-2026-06-29 17:11:26,571 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,571 - INFO - [cached since 2.183s ago] (1036, 'Energy Drink', 'Drinks', 7, 28, 196, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,573 - INFO - COMMIT
-2026-06-29 17:11:26,613 - INFO - Add transactions to the database
-2026-06-29 17:11:26,613 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,614 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,614 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,529 - INFO - [cached since 0.6878s ago] (1036, 1, 0)
+2026-09-25 02:05:24,530 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,530 - INFO - [cached since 0.6827s ago] (1036, 'Energy Drink', 'Drinks', 7, 28, 196, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,534 - INFO - COMMIT
+2026-09-25 02:05:24,544 - INFO - Add transactions to the database
+2026-09-25 02:05:24,544 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,546 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,547 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,615 - INFO - [cached since 2.233s ago] (1037, 1, 0)
-2026-06-29 17:11:26,616 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,616 - INFO - [cached since 2.228s ago] (1037, 'Cookies', 'Snacks', 4, 20, 80, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,618 - INFO - COMMIT
-2026-06-29 17:11:26,648 - INFO - Add transactions to the database
-2026-06-29 17:11:26,649 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,649 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,652 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,547 - INFO - [cached since 0.7064s ago] (1037, 1, 0)
+2026-09-25 02:05:24,549 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,549 - INFO - [cached since 0.7012s ago] (1037, 'Cookies', 'Snacks', 4, 20, 80, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,551 - INFO - COMMIT
+2026-09-25 02:05:24,560 - INFO - Add transactions to the database
+2026-09-25 02:05:24,561 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,562 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,563 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,653 - INFO - [cached since 2.271s ago] (1038, 1, 0)
-2026-06-29 17:11:26,655 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,655 - INFO - [cached since 2.267s ago] (1038, 'Sugar', 'Food', 9, 25, 225, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,682 - INFO - COMMIT
-2026-06-29 17:11:26,728 - INFO - Add transactions to the database
-2026-06-29 17:11:26,728 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,729 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,729 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,563 - INFO - [cached since 0.7227s ago] (1038, 1, 0)
+2026-09-25 02:05:24,565 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,565 - INFO - [cached since 0.7174s ago] (1038, 'Sugar', 'Food', 9, 25, 225, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,568 - INFO - COMMIT
+2026-09-25 02:05:24,578 - INFO - Add transactions to the database
+2026-09-25 02:05:24,579 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,579 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,583 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,730 - INFO - [cached since 2.348s ago] (1039, 1, 0)
-2026-06-29 17:11:26,731 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,731 - INFO - [cached since 2.343s ago] (1039, 'Flour', 'Food', 5, 32, 160, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,733 - INFO - COMMIT
-2026-06-29 17:11:26,763 - INFO - Add transactions to the database
-2026-06-29 17:11:26,763 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,763 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,764 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,585 - INFO - [cached since 0.7442s ago] (1039, 1, 0)
+2026-09-25 02:05:24,587 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,590 - INFO - [cached since 0.7422s ago] (1039, 'Flour', 'Food', 5, 32, 160, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,595 - INFO - COMMIT
+2026-09-25 02:05:24,601 - INFO - Add transactions to the database
+2026-09-25 02:05:24,602 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,602 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,603 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,764 - INFO - [cached since 2.383s ago] (1041, 1, 0)
-2026-06-29 17:11:26,766 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,766 - INFO - [cached since 2.378s ago] (1041, 'Soap', 'Household', 1, 45, 45, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,768 - INFO - COMMIT
-2026-06-29 17:11:26,808 - INFO - Add transactions to the database
-2026-06-29 17:11:26,809 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,809 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,810 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,607 - INFO - [cached since 0.7658s ago] (1041, 1, 0)
+2026-09-25 02:05:24,611 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,612 - INFO - [cached since 0.7642s ago] (1041, 'Soap', 'Household', 1, 45, 45, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,615 - INFO - COMMIT
+2026-09-25 02:05:24,623 - INFO - Add transactions to the database
+2026-09-25 02:05:24,623 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,627 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,630 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,810 - INFO - [cached since 2.429s ago] (1042, 1, 0)
-2026-06-29 17:11:26,811 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,812 - INFO - [cached since 2.424s ago] (1042, 'Milk', 'Dairy', 4, 18, 72, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,814 - INFO - COMMIT
-2026-06-29 17:11:26,943 - INFO - Add transactions to the database
-2026-06-29 17:11:26,943 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,944 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,944 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,630 - INFO - [cached since 0.7893s ago] (1042, 1, 0)
+2026-09-25 02:05:24,632 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,632 - INFO - [cached since 0.7845s ago] (1042, 'Milk', 'Dairy', 4, 18, 72, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,636 - INFO - COMMIT
+2026-09-25 02:05:24,646 - INFO - Add transactions to the database
+2026-09-25 02:05:24,646 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,647 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,648 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,945 - INFO - [cached since 2.563s ago] (1043, 1, 0)
-2026-06-29 17:11:26,946 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,947 - INFO - [cached since 2.559s ago] (1043, 'Eggs', 'Dairy', 2, 35, 70, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,949 - INFO - COMMIT
-2026-06-29 17:11:26,988 - INFO - Add transactions to the database
-2026-06-29 17:11:26,988 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:26,989 - INFO - BEGIN (implicit)
-2026-06-29 17:11:26,989 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,648 - INFO - [cached since 0.8075s ago] (1043, 1, 0)
+2026-09-25 02:05:24,650 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,652 - INFO - [cached since 0.804s ago] (1043, 'Eggs', 'Dairy', 2, 35, 70, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,666 - INFO - COMMIT
+2026-09-25 02:05:24,674 - INFO - Add transactions to the database
+2026-09-25 02:05:24,674 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,675 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,677 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:26,990 - INFO - [cached since 2.608s ago] (1044, 1, 0)
-2026-06-29 17:11:26,991 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:26,992 - INFO - [cached since 2.604s ago] (1044, 'Coke', 'Drinks', 5, 15, 75, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:26,996 - INFO - COMMIT
-2026-06-29 17:11:27,034 - INFO - Add transactions to the database
-2026-06-29 17:11:27,034 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:27,035 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,035 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,679 - INFO - [cached since 0.8379s ago] (1044, 1, 0)
+2026-09-25 02:05:24,680 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,681 - INFO - [cached since 0.8334s ago] (1044, 'Coke', 'Drinks', 5, 15, 75, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,684 - INFO - COMMIT
+2026-09-25 02:05:24,696 - INFO - Add transactions to the database
+2026-09-25 02:05:24,696 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,697 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,698 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,036 - INFO - [cached since 2.654s ago] (1045, 1, 0)
-2026-06-29 17:11:27,037 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,037 - INFO - [cached since 2.649s ago] (1045, 'Water', 'Drinks', 4, 10, 40, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:27,039 - INFO - COMMIT
-2026-06-29 17:11:27,081 - INFO - Add transactions to the database
-2026-06-29 17:11:27,081 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:27,082 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,082 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,700 - INFO - [cached since 0.8588s ago] (1045, 1, 0)
+2026-09-25 02:05:24,702 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,703 - INFO - [cached since 0.8552s ago] (1045, 'Water', 'Drinks', 4, 10, 40, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,715 - INFO - COMMIT
+2026-09-25 02:05:24,720 - INFO - Add transactions to the database
+2026-09-25 02:05:24,720 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,723 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,728 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,083 - INFO - [cached since 2.701s ago] (1046, 1, 0)
-2026-06-29 17:11:27,084 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,085 - INFO - [cached since 2.697s ago] (1046, 'Apple Juice', 'Drinks', 3, 22, 66, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:27,087 - INFO - COMMIT
-2026-06-29 17:11:27,127 - INFO - Add transactions to the database
-2026-06-29 17:11:27,127 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:27,128 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,128 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,729 - INFO - [cached since 0.8883s ago] (1046, 1, 0)
+2026-09-25 02:05:24,731 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,732 - INFO - [cached since 0.8838s ago] (1046, 'Apple Juice', 'Drinks', 3, 22, 66, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,737 - INFO - COMMIT
+2026-09-25 02:05:24,748 - INFO - Add transactions to the database
+2026-09-25 02:05:24,748 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,749 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,750 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,129 - INFO - [cached since 2.747s ago] (1047, 1, 0)
-2026-06-29 17:11:27,130 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,130 - INFO - [cached since 2.742s ago] (1047, 'Pasta', 'Food', 5, 30, 150, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:27,132 - INFO - COMMIT
-2026-06-29 17:11:27,162 - INFO - Add transactions to the database
-2026-06-29 17:11:27,162 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:27,162 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,163 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,750 - INFO - [cached since 0.9091s ago] (1047, 1, 0)
+2026-09-25 02:05:24,751 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,751 - INFO - [cached since 0.9037s ago] (1047, 'Pasta', 'Food', 5, 30, 150, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,759 - INFO - COMMIT
+2026-09-25 02:05:24,765 - INFO - Add transactions to the database
+2026-09-25 02:05:24,766 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,766 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,767 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,163 - INFO - [cached since 2.782s ago] (1048, 1, 0)
-2026-06-29 17:11:27,165 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,165 - INFO - [cached since 2.777s ago] (1048, 'Rice', 'Food', 6, 40, 240, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:27,168 - INFO - COMMIT
-2026-06-29 17:11:27,196 - INFO - Add transactions to the database
-2026-06-29 17:11:27,197 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:27,197 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,198 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,767 - INFO - [cached since 0.9263s ago] (1048, 1, 0)
+2026-09-25 02:05:24,768 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,769 - INFO - [cached since 0.921s ago] (1048, 'Rice', 'Food', 6, 40, 240, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,777 - INFO - COMMIT
+2026-09-25 02:05:24,783 - INFO - Add transactions to the database
+2026-09-25 02:05:24,783 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,784 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,784 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,198 - INFO - [cached since 2.816s ago] (1049, 1, 0)
-2026-06-29 17:11:27,199 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,200 - INFO - [cached since 2.812s ago] (1049, 'Beans', 'Food', 7, 18, 126, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:27,202 - INFO - COMMIT
-2026-06-29 17:11:27,231 - INFO - Add transactions to the database
-2026-06-29 17:11:27,231 - INFO - Adding valid transactions to the database
-2026-06-29 17:11:27,232 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,232 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
+2026-09-25 02:05:24,785 - INFO - [cached since 0.9439s ago] (1049, 1, 0)
+2026-09-25 02:05:24,786 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,786 - INFO - [cached since 0.9386s ago] (1049, 'Beans', 'Food', 7, 18, 126, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,796 - INFO - COMMIT
+2026-09-25 02:05:24,800 - INFO - Add transactions to the database
+2026-09-25 02:05:24,800 - INFO - Adding valid transactions to the database
+2026-09-25 02:05:24,801 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,802 - INFO - SELECT sales.id AS sales_id, sales.transaction_id AS sales_transaction_id, sales.product AS sales_product, sales.category AS sales_category, sales.quantity AS sales_quantity, sales.price AS sales_price, sales.total_sale AS sales_total_sale, sales.load_date AS sales_load_date 
 FROM sales 
 WHERE sales.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,233 - INFO - [cached since 2.851s ago] (1050, 1, 0)
-2026-06-29 17:11:27,234 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,234 - INFO - [cached since 2.846s ago] (1050, 'Soap', 'Household', 2, 45, 90, '2026-06-29 17:11:16.418889')
-2026-06-29 17:11:27,237 - INFO - COMMIT
-2026-06-29 17:11:27,285 - INFO - Add transactions to the database
-2026-06-29 17:11:27,285 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,286 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,291 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:24,803 - INFO - [cached since 0.9622s ago] (1050, 1, 0)
+2026-09-25 02:05:24,808 - INFO - INSERT INTO sales (transaction_id, product, category, quantity, price, total_sale, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,811 - INFO - [cached since 0.9605s ago] (1050, 'Soap', 'Household', 2, 45, 90, '2026-09-25 02:05:23.542328')
+2026-09-25 02:05:24,814 - INFO - COMMIT
+2026-09-25 02:05:24,831 - INFO - Add transactions to the database
+2026-09-25 02:05:24,831 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:24,832 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,834 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,292 - INFO - [generated in 0.00131s] (1010, 1, 0)
-2026-06-29 17:11:27,296 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,297 - INFO - [generated in 0.00062s] (1010, 'Bread', 'Food', '-2', '20', 'Negative quantities', '2026-06-29 17:11:16.424134')
-2026-06-29 17:11:27,300 - INFO - COMMIT
-2026-06-29 17:11:27,334 - INFO - Add transactions to the database
-2026-06-29 17:11:27,334 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,335 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,335 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:24,835 - INFO - [generated in 0.00048s] (1010, 1, 0)
+2026-09-25 02:05:24,841 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,843 - INFO - [generated in 0.00626s] (1010, 'Bread', 'Food', '-2', '20', 'Negative quantities', '2026-09-25 02:05:23.549387')
+2026-09-25 02:05:24,847 - INFO - COMMIT
+2026-09-25 02:05:24,852 - INFO - Add transactions to the database
+2026-09-25 02:05:24,852 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:24,853 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,853 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,335 - INFO - [cached since 0.04508s ago] (1011, 1, 0)
-2026-06-29 17:11:27,337 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,337 - INFO - [cached since 0.04106s ago] (1011, 'Coke', 'Drinks', '0', '15', 'Negative quantities', '2026-06-29 17:11:16.424134')
-2026-06-29 17:11:27,339 - INFO - COMMIT
-2026-06-29 17:11:27,380 - INFO - Add transactions to the database
-2026-06-29 17:11:27,380 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,381 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,382 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:24,856 - INFO - [cached since 0.02132s ago] (1011, 1, 0)
+2026-09-25 02:05:24,862 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,863 - INFO - [cached since 0.02573s ago] (1011, 'Coke', 'Drinks', '0', '15', 'Negative quantities', '2026-09-25 02:05:23.549387')
+2026-09-25 02:05:24,865 - INFO - COMMIT
+2026-09-25 02:05:24,878 - INFO - Add transactions to the database
+2026-09-25 02:05:24,878 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:24,879 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,880 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,382 - INFO - [cached since 0.09148s ago] (1012, 1, 0)
-2026-06-29 17:11:27,383 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,384 - INFO - [cached since 0.08756s ago] (1012, 'Milk', 'Dairy', '5', '-18', 'Negative Price', '2026-06-29 17:11:16.424134')
-2026-06-29 17:11:27,386 - INFO - COMMIT
-2026-06-29 17:11:27,427 - INFO - Add transactions to the database
-2026-06-29 17:11:27,427 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,428 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,428 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:24,881 - INFO - [cached since 0.0462s ago] (1012, 1, 0)
+2026-09-25 02:05:24,882 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,883 - INFO - [cached since 0.04581s ago] (1012, 'Milk', 'Dairy', '5', '-18', 'Negative Price', '2026-09-25 02:05:23.549387')
+2026-09-25 02:05:24,885 - INFO - COMMIT
+2026-09-25 02:05:24,894 - INFO - Add transactions to the database
+2026-09-25 02:05:24,894 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:24,895 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,895 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,429 - INFO - [cached since 0.1384s ago] (1013, 1, 0)
-2026-06-29 17:11:27,430 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,431 - INFO - [cached since 0.1347s ago] (1013, 'Eggs', 'Dairy', 'abc', '35', 'Uknown types like we got alphabets or symbols instead of numbers from quantity', '2026-06-29 17:11:16.424134')
-2026-06-29 17:11:27,433 - INFO - COMMIT
-2026-06-29 17:11:27,473 - INFO - Add transactions to the database
-2026-06-29 17:11:27,473 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,473 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,475 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:24,896 - INFO - [cached since 0.06143s ago] (1013, 1, 0)
+2026-09-25 02:05:24,897 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,898 - INFO - [cached since 0.06093s ago] (1013, 'Eggs', 'Dairy', 'abc', '35', 'Uknown types like we got alphabets or symbols instead of numbers from quantity', '2026-09-25 02:05:23.549387')
+2026-09-25 02:05:24,901 - INFO - COMMIT
+2026-09-25 02:05:24,912 - INFO - Add transactions to the database
+2026-09-25 02:05:24,912 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:24,913 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,913 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,475 - INFO - [cached since 0.1847s ago] (1014, 1, 0)
-2026-06-29 17:11:27,476 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,477 - INFO - [cached since 0.1807s ago] (1014, 'Chocolate', 'Snacks', '4', 'xyz', 'Uknown types like we got alphabets or symbols instead of numbers from price', '2026-06-29 17:11:16.424134')
-2026-06-29 17:11:27,479 - INFO - COMMIT
-2026-06-29 17:11:27,518 - INFO - Add transactions to the database
-2026-06-29 17:11:27,519 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,519 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,520 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:24,914 - INFO - [cached since 0.07948s ago] (1014, 1, 0)
+2026-09-25 02:05:24,915 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,915 - INFO - [cached since 0.07849s ago] (1014, 'Chocolate', 'Snacks', '4', 'xyz', 'Uknown types like we got alphabets or symbols instead of numbers from price', '2026-09-25 02:05:23.549387')
+2026-09-25 02:05:24,918 - INFO - COMMIT
+2026-09-25 02:05:24,929 - INFO - Add transactions to the database
+2026-09-25 02:05:24,930 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:24,930 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,931 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,520 - INFO - [cached since 0.23s ago] (1016, 1, 0)
-2026-06-29 17:11:27,522 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,522 - INFO - [cached since 0.2259s ago] (1016, 'Coke', 'Drinks', '3', '15', 'Dublicates', '2026-06-29 17:11:16.424134')
-2026-06-29 17:11:27,524 - INFO - COMMIT
-2026-06-29 17:11:27,564 - INFO - Add transactions to the database
-2026-06-29 17:11:27,564 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,565 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,566 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:24,931 - INFO - [cached since 0.09691s ago] (1016, 1, 0)
+2026-09-25 02:05:24,932 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,933 - INFO - [cached since 0.09587s ago] (1016, 'Coke', 'Drinks', '3', '15', 'Dublicates', '2026-09-25 02:05:23.549387')
+2026-09-25 02:05:24,935 - INFO - COMMIT
+2026-09-25 02:05:24,947 - INFO - Add transactions to the database
+2026-09-25 02:05:24,947 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:24,948 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,948 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,566 - INFO - [cached since 0.2757s ago] (1016, 1, 0)
-2026-06-29 17:11:27,568 - INFO - Add transactions to the database
-2026-06-29 17:11:27,568 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,568 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:24,949 - INFO - [cached since 0.1144s ago] (1016, 1, 0)
+2026-09-25 02:05:24,951 - INFO - Add transactions to the database
+2026-09-25 02:05:24,951 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:24,952 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,569 - INFO - [cached since 0.2783s ago] (1017, 1, 0)
-2026-06-29 17:11:27,570 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,571 - INFO - [cached since 0.2745s ago] (1017, None, 'Food', '2', '20', 'Product missing', '2026-06-29 17:11:16.424134')
-2026-06-29 17:11:27,573 - INFO - COMMIT
-2026-06-29 17:11:27,611 - INFO - Add transactions to the database
-2026-06-29 17:11:27,611 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,611 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,612 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:24,952 - INFO - [cached since 0.1179s ago] (1017, 1, 0)
+2026-09-25 02:05:24,955 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,958 - INFO - [cached since 0.1201s ago] (1017, None, 'Food', '2', '20', 'Product missing', '2026-09-25 02:05:23.549387')
+2026-09-25 02:05:24,962 - INFO - COMMIT
+2026-09-25 02:05:24,968 - INFO - Add transactions to the database
+2026-09-25 02:05:24,968 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:24,969 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,970 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,613 - INFO - [cached since 0.3222s ago] (1020, 1, 0)
-2026-06-29 17:11:27,614 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,615 - INFO - [cached since 0.3186s ago] (1020, 'Water', 'Drinks', '1000', '10', 'We have strange transactions like quantity is bigger than price', '2026-06-29 17:11:16.424134')
-2026-06-29 17:11:27,617 - INFO - COMMIT
-2026-06-29 17:11:27,657 - INFO - Add transactions to the database
-2026-06-29 17:11:27,657 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,659 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,661 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:24,970 - INFO - [cached since 0.1358s ago] (1020, 1, 0)
+2026-09-25 02:05:24,978 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,978 - INFO - [cached since 0.1414s ago] (1020, 'Water', 'Drinks', '1000', '10', 'We have strange transactions like quantity is bigger than price', '2026-09-25 02:05:23.549387')
+2026-09-25 02:05:24,981 - INFO - COMMIT
+2026-09-25 02:05:24,986 - INFO - Add transactions to the database
+2026-09-25 02:05:24,986 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:24,987 - INFO - BEGIN (implicit)
+2026-09-25 02:05:24,992 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,662 - INFO - [cached since 0.3713s ago] (1027, 1, 0)
-2026-06-29 17:11:27,663 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,664 - INFO - [cached since 0.3674s ago] (1027, 'Apple', 'Food', '12', '8', 'We have strange transactions like quantity is bigger than price', '2026-06-29 17:11:16.424134')
-2026-06-29 17:11:27,696 - INFO - COMMIT
-2026-06-29 17:11:27,746 - INFO - Add transactions to the database
-2026-06-29 17:11:27,746 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,747 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,748 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:24,995 - INFO - [cached since 0.1604s ago] (1027, 1, 0)
+2026-09-25 02:05:24,997 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:24,997 - INFO - [cached since 0.16s ago] (1027, 'Apple', 'Food', '12', '8', 'We have strange transactions like quantity is bigger than price', '2026-09-25 02:05:23.549387')
+2026-09-25 02:05:25,000 - INFO - COMMIT
+2026-09-25 02:05:25,010 - INFO - Add transactions to the database
+2026-09-25 02:05:25,010 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,011 - INFO - BEGIN (implicit)
+2026-09-25 02:05:25,013 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,748 - INFO - [cached since 0.4575s ago] (1028, 1, 0)
-2026-06-29 17:11:27,749 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,750 - INFO - [cached since 0.4535s ago] (1028, 'Banana', 'Food', '15', '6', 'We have strange transactions like quantity is bigger than price', '2026-06-29 17:11:16.424134')
-2026-06-29 17:11:27,752 - INFO - COMMIT
-2026-06-29 17:11:27,792 - INFO - Add transactions to the database
-2026-06-29 17:11:27,793 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,793 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,794 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,013 - INFO - [cached since 0.1787s ago] (1028, 1, 0)
+2026-09-25 02:05:25,014 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:25,015 - INFO - [cached since 0.1779s ago] (1028, 'Banana', 'Food', '15', '6', 'We have strange transactions like quantity is bigger than price', '2026-09-25 02:05:23.549387')
+2026-09-25 02:05:25,018 - INFO - COMMIT
+2026-09-25 02:05:25,029 - INFO - Add transactions to the database
+2026-09-25 02:05:25,029 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,030 - INFO - BEGIN (implicit)
+2026-09-25 02:05:25,031 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,794 - INFO - [cached since 0.5036s ago] (1029, 1, 0)
-2026-06-29 17:11:27,795 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,795 - INFO - [cached since 0.4994s ago] (1029, 'Orange', 'Food', '10', '9', 'We have strange transactions like quantity is bigger than price', '2026-06-29 17:11:16.424134')
-2026-06-29 17:11:27,798 - INFO - COMMIT
-2026-06-29 17:11:27,829 - INFO - Add transactions to the database
-2026-06-29 17:11:27,829 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,829 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,830 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,031 - INFO - [cached since 0.1972s ago] (1029, 1, 0)
+2026-09-25 02:05:25,033 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:25,033 - INFO - [cached since 0.1962s ago] (1029, 'Orange', 'Food', '10', '9', 'We have strange transactions like quantity is bigger than price', '2026-09-25 02:05:23.549387')
+2026-09-25 02:05:25,036 - INFO - COMMIT
+2026-09-25 02:05:25,046 - INFO - Add transactions to the database
+2026-09-25 02:05:25,047 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,048 - INFO - BEGIN (implicit)
+2026-09-25 02:05:25,049 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,830 - INFO - [cached since 0.5398s ago] (1040, 1, 0)
-2026-06-29 17:11:27,831 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
-2026-06-29 17:11:27,832 - INFO - [cached since 0.5355s ago] (1040, 'Coke', 'Drinks', '999999', '15', 'We have strange transactions like quantity is bigger than price', '2026-06-29 17:11:16.424134')
-2026-06-29 17:11:27,834 - INFO - COMMIT
-2026-06-29 17:11:27,878 - INFO - Add transactions to the database
-2026-06-29 17:11:27,878 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,878 - INFO - BEGIN (implicit)
-2026-06-29 17:11:27,879 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,050 - INFO - [cached since 0.2157s ago] (1040, 1, 0)
+2026-09-25 02:05:25,052 - INFO - INSERT INTO invalid_transaction (transaction_id, product, category, quantity, price, description, load_date) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-09-25 02:05:25,052 - INFO - [cached since 0.2154s ago] (1040, 'Coke', 'Drinks', '999999', '15', 'We have strange transactions like quantity is bigger than price', '2026-09-25 02:05:23.549387')
+2026-09-25 02:05:25,063 - INFO - COMMIT
+2026-09-25 02:05:25,070 - INFO - Add transactions to the database
+2026-09-25 02:05:25,070 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,071 - INFO - BEGIN (implicit)
+2026-09-25 02:05:25,079 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,879 - INFO - [cached since 0.5888s ago] (1010, 1, 0)
-2026-06-29 17:11:27,880 - INFO - Add transactions to the database
-2026-06-29 17:11:27,881 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,881 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,079 - INFO - [cached since 0.2448s ago] (1010, 1, 0)
+2026-09-25 02:05:25,080 - INFO - Add transactions to the database
+2026-09-25 02:05:25,081 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,081 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,881 - INFO - [cached since 0.591s ago] (1011, 1, 0)
-2026-06-29 17:11:27,882 - INFO - Add transactions to the database
-2026-06-29 17:11:27,883 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,883 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,082 - INFO - [cached since 0.2476s ago] (1011, 1, 0)
+2026-09-25 02:05:25,085 - INFO - Add transactions to the database
+2026-09-25 02:05:25,085 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,086 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,884 - INFO - [cached since 0.5931s ago] (1012, 1, 0)
-2026-06-29 17:11:27,885 - INFO - Add transactions to the database
-2026-06-29 17:11:27,885 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,886 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,086 - INFO - [cached since 0.2521s ago] (1012, 1, 0)
+2026-09-25 02:05:25,094 - INFO - Add transactions to the database
+2026-09-25 02:05:25,095 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,096 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,886 - INFO - [cached since 0.5958s ago] (1013, 1, 0)
-2026-06-29 17:11:27,888 - INFO - Add transactions to the database
-2026-06-29 17:11:27,888 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,888 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,096 - INFO - [cached since 0.2621s ago] (1013, 1, 0)
+2026-09-25 02:05:25,098 - INFO - Add transactions to the database
+2026-09-25 02:05:25,098 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,099 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,888 - INFO - [cached since 0.5981s ago] (1014, 1, 0)
-2026-06-29 17:11:27,890 - INFO - Add transactions to the database
-2026-06-29 17:11:27,890 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,891 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,099 - INFO - [cached since 0.2648s ago] (1014, 1, 0)
+2026-09-25 02:05:25,100 - INFO - Add transactions to the database
+2026-09-25 02:05:25,100 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,101 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,892 - INFO - [cached since 0.6013s ago] (1016, 1, 0)
-2026-06-29 17:11:27,894 - INFO - Add transactions to the database
-2026-06-29 17:11:27,894 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,896 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,101 - INFO - [cached since 0.2671s ago] (1016, 1, 0)
+2026-09-25 02:05:25,103 - INFO - Add transactions to the database
+2026-09-25 02:05:25,103 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,106 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,896 - INFO - [cached since 0.6058s ago] (1016, 1, 0)
-2026-06-29 17:11:27,898 - INFO - Add transactions to the database
-2026-06-29 17:11:27,898 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,898 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,112 - INFO - [cached since 0.2779s ago] (1016, 1, 0)
+2026-09-25 02:05:25,114 - INFO - Add transactions to the database
+2026-09-25 02:05:25,114 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,115 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,899 - INFO - [cached since 0.6084s ago] (1017, 1, 0)
-2026-06-29 17:11:27,900 - INFO - Add transactions to the database
-2026-06-29 17:11:27,900 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,901 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,115 - INFO - [cached since 0.2808s ago] (1017, 1, 0)
+2026-09-25 02:05:25,116 - INFO - Add transactions to the database
+2026-09-25 02:05:25,117 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,117 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,901 - INFO - [cached since 0.6107s ago] (1020, 1, 0)
-2026-06-29 17:11:27,903 - INFO - Add transactions to the database
-2026-06-29 17:11:27,904 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,904 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,118 - INFO - [cached since 0.2833s ago] (1020, 1, 0)
+2026-09-25 02:05:25,120 - INFO - Add transactions to the database
+2026-09-25 02:05:25,122 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,127 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,904 - INFO - [cached since 0.6141s ago] (1027, 1, 0)
-2026-06-29 17:11:27,906 - INFO - Add transactions to the database
-2026-06-29 17:11:27,906 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,906 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,129 - INFO - [cached since 0.2936s ago] (1027, 1, 0)
+2026-09-25 02:05:25,131 - INFO - Add transactions to the database
+2026-09-25 02:05:25,131 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,132 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,907 - INFO - [cached since 0.6162s ago] (1028, 1, 0)
-2026-06-29 17:11:27,908 - INFO - Add transactions to the database
-2026-06-29 17:11:27,909 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,909 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,132 - INFO - [cached since 0.2976s ago] (1028, 1, 0)
+2026-09-25 02:05:25,133 - INFO - Add transactions to the database
+2026-09-25 02:05:25,133 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,134 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,910 - INFO - [cached since 0.6192s ago] (1029, 1, 0)
-2026-06-29 17:11:27,914 - INFO - Add transactions to the database
-2026-06-29 17:11:27,914 - CRITICAL - Addidng Invalid transactions to the database
-2026-06-29 17:11:27,915 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
+2026-09-25 02:05:25,134 - INFO - [cached since 0.2999s ago] (1029, 1, 0)
+2026-09-25 02:05:25,145 - INFO - Add transactions to the database
+2026-09-25 02:05:25,145 - CRITICAL - Addidng Invalid transactions to the database
+2026-09-25 02:05:25,146 - INFO - SELECT invalid_transaction.id AS invalid_transaction_id, invalid_transaction.transaction_id AS invalid_transaction_transaction_id, invalid_transaction.product AS invalid_transaction_product, invalid_transaction.category AS invalid_transaction_category, invalid_transaction.quantity AS invalid_transaction_quantity, invalid_transaction.price AS invalid_transaction_price, invalid_transaction.description AS invalid_transaction_description, invalid_transaction.load_date AS invalid_transaction_load_date 
 FROM invalid_transaction 
 WHERE invalid_transaction.transaction_id = ?
  LIMIT ? OFFSET ?
-2026-06-29 17:11:27,915 - INFO - [cached since 0.6248s ago] (1040, 1, 0)
-2026-06-29 17:11:27,918 - INFO - Finished the operation
+2026-09-25 02:05:25,146 - INFO - [cached since 0.3122s ago] (1040, 1, 0)
+2026-09-25 02:05:25,149 - INFO - Finished the operation
